@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharma Website</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      cursor: none; /* Hide default cursor */
+    }
+
+    /* Header */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100; /* Ensure header is above the video */
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header nav {
+    user-select: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    /* Navigation Buttons */
+    header nav a {
+      text-decoration: none;
+      height: fit-content;
+      padding: 5px 8px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      cursor: none; /* Hide default cursor */
+      color: #2c9caf;
+      transition: all 1000ms;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+      outline: 2px solid #2c9caf;
+    }
+
+    header nav a:hover {
+      color: #ffffff;
+      transform: scale(1.1);
+      outline: 2px solid #70bdca;
+      box-shadow: 4px 5px 17px -4px #268391;
+    }
+
+    header nav a::before {
+      content: "";
+      position: absolute;
+      left: -50px;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background-color: #2c9caf;
+      transform: skewX(45deg);
+      z-index: -1;
+      transition: width 1000ms;
+    }
+
+    header nav a:hover::before {
+      width: 250%;
+    }
+
+    /* Custom Cursor (Pill Shape) */
+    .custom-cursor {
+      position: fixed;
+      width: 35px; /* Width of the pill */
+      height: 17px; /* Height of the pill */
+      background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%); /* Two-tone pill */
+      border-radius: 50px; /* Pill shape (rounded rectangle) */
+      border: 2px solid #fff; /* White border for realism */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for 3D effect */
+      pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
+      z-index: 1000;
+      transform: translate(-50%, -50%) rotate(90deg); /* Horizontal by default */
+      transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
+    }
+
+    /* Hover Effect for Cursor */
+    .custom-cursor.hover-effect {
+      width: 20px; /* Make it taller */
+      height: 40px; /* Make it narrower */
+      background: #ff6f61; /* Change color */
+      border-radius: 10px; /* Change shape to a rectangle */
+      transform: translate(-50%, -50%) rotate(90deg); /* Rotate to vertical */
+      box-shadow: 0 0 20px rgba(255, 111, 97, 0.8); /* Glow effect */
+    }
+
+    /* Cursor Label */
+    .cursor-label {
+      position: absolute;
+      top: 5px; /* Position below the cursor */
+      left: 40px;
+      transform: translateX(-50%) rotate(0deg); /* Horizontal by default */
+      background: #ffffff;
+      color: #1385af;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .custom-cursor.hover-effect .cursor-label {
+      opacity: 1; /* Show label on hover */
+      transform: translateX(-50%) rotate(270deg); /* Keep label horizontal */
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #ff6f61;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    .hero .btn:hover {
+      background: #e65a50;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .services .service-item {
+      display: inline-block;
+      width: 30%;
+      margin: 0 1.5%;
+      vertical-align: top;
+    }
+
+    .services .service-item img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .services .service-item h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .services .service-item p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Video Section */
+    .vid {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+    }
+    .vid::after {
+        z-index: 10;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.416);
+      backdrop-filter: blur(3px);
+    }
+
+    .vid video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1; /* Ensure video is below the header */
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+      width: 130px; /* Adjust width as needed */
+      height: 180px; /* Adjust height as needed */
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    /* Carousel Slides */
+    .carousel-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0; /* Hide all slides by default */
+      transition: opacity 1.5s ease-in-out; /* Fade transition */
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure the image fits within the slide */
+    }
+
+    .carousel-slide.active {
+      opacity: 1; /* Show the active slide */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .services .service-item {
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .vid {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <div class="cursor-label" id="cursor-label"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="#" data-label="Home">Home</a>
+      <a href="#" data-label="About Us">About Us</a>
+      <a href="#" data-label="Therapy Focus">Therapy Focus</a>
+      <div class="carousel">
+        <div class="carousel-slides">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active">
+            <img src="G-LOGO (1).png" alt="Slide 1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <img src="text.png" alt="Slide 2">
+          </div>
+        </div>
+      </div>
+      <a href="#" data-label="Products">Products</a>
+      <a href="#" data-label="Services">Services</a>
+      <a href="#" data-label="Contact Us">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Video Section -->
+  <div class="vid">
+    <video autoplay muted loop id="background-video">
+      <source src="backvid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Your Trusted Partner in Healthcare</h1>
+    <p>Providing high-quality medications and healthcare solutions.</p>
+    <a href="#" class="btn">Learn More</a>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-item">
+      <img src="https://via.placeholder.com/200" alt="Service 1" height="50">
+      <h3>Medication Delivery</h3>
+      <p>Fast and reliable delivery of medications to your doorstep.</p>
+    </div>
+    <div class="service-item">
+      <img src="https://via.placeholder.com/200" alt="Service 2" height="50">
+      <h3>Telemedicine</h3>
+      <p>Consult with healthcare professionals online.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Pharma Company. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Custom Cursor and Interaction -->
+  <script>
+    // Custom Cursor
+    const cursor = document.getElementById('custom-cursor');
+    const cursorLabel = document.getElementById('cursor-label');
+
+    // Move custom cursor with mouse
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+    });
+
+    // Add interaction effects for navigation buttons
+    const navButtons = document.querySelectorAll('header nav a');
+
+    navButtons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover-effect'); // Add hover effect
+        cursorLabel.textContent = button.getAttribute('data-label'); // Set label text
+      });
+
+      button.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover-effect'); // Remove hover effect
+        cursorLabel.textContent = ''; // Clear label text
+      });
+    });
+
+    // Carousel functionality
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      // Hide all slides
+      carouselSlides.forEach((slide) => {
+        slide.classList.remove('active');
+      });
+
+      // Show the current slide
+      carouselSlides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % carouselSlides.length; // Loop through slides
+      showSlide(currentIndex);
+    }
+
+    // Automatically transition slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Show the first slide initially
+    showSlide(currentIndex);
+  </script>
+</body>
+</html>
