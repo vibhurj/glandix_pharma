@@ -6,6 +6,7 @@
   <title>Pharma Website</title>
   <style>
     /* Basic Reset */
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     * {
       margin: 0;
       padding: 0;
@@ -39,7 +40,7 @@
     }
 
     header nav {
-    user-select: none;
+      user-select: none;
       width: 100%;
       display: flex;
       justify-content: space-evenly;
@@ -47,71 +48,67 @@
     }
 
     /* Navigation Buttons */
-    header nav a {
-      text-decoration: none;
-      height: fit-content;
-      padding: 5px 8px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      cursor: none; /* Hide default cursor */
-      color: #2c9caf;
-      transition: all 1000ms;
-      font-size: 13px;
-      position: relative;
-      overflow: hidden;
-      outline: 2px solid #2c9caf;
-    }
+    /* Navigation Buttons */
+header nav a {
+  text-decoration: none;
+    width: 8em;
+    /* height: 3.1em; */
+    font-family: "Josefin Sans", serif;
+    padding: 6px 3px;
+    position: relative;
+    border: 3px solid #149ceacc;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 0.5s;
+    border-radius: 2.3em;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    pointer-events: auto;
+}
 
-    header nav a:hover {
-      color: #ffffff;
-      transform: scale(1.1);
-      outline: 2px solid #70bdca;
-      box-shadow: 4px 5px 17px -4px #268391;
-    }
+/* Hover effect for navigation buttons */
+header nav a:hover {
+  box-shadow: inset 0px 0px 25px #1479EA; /* Inner shadow on hover */
+  color: white; /* Text color on hover */
+  transform: scale(1.05); /* Slight scale-up effect */
+}
 
-    header nav a::before {
-      content: "";
-      position: absolute;
-      left: -50px;
-      top: 0;
-      width: 0;
-      height: 100%;
-      background-color: #2c9caf;
-      transform: skewX(45deg);
-      z-index: -1;
-      transition: width 1000ms;
-    }
 
-    header nav a:hover::before {
-      width: 250%;
-    }
+/* Hide the top and bottom bars on hover */
+header nav a:hover::before,
+header nav a:hover::after {
+  transform: scale(0); /* Hide bars on hover */
+}
 
     /* Custom Cursor (Pill Shape) */
     .custom-cursor {
       position: fixed;
-      width: 35px; /* Width of the pill */
-      height: 17px; /* Height of the pill */
-      background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%); /* Two-tone pill */
-      border-radius: 50px; /* Pill shape (rounded rectangle) */
-      border: 2px solid #fff; /* White border for realism */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for 3D effect */
-      pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
+      width: 35px;
+      height: 17px;
+      background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%);
+      border-radius: 50px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      pointer-events: none; /* Ensure cursor doesn't block interactions */
       z-index: 1000;
-      transform: translate(-50%, -50%) rotate(90deg); /* Horizontal by default */
+      transform: translate(-50%, -50%) rotate(90deg); /* Center the cursor */
       transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
     }
 
     /* Hover Effect for Cursor */
     .custom-cursor.hover-effect {
-      width: 20px; /* Make it taller */
-      height: 40px; /* Make it narrower */
-      background: #ff6f61; /* Change color */
-      border-radius: 10px; /* Change shape to a rectangle */
-      transform: translate(-50%, -50%) rotate(90deg); /* Rotate to vertical */
-      box-shadow: 0 0 20px rgba(255, 111, 97, 0.8); /* Glow effect */
+      width: 10px; /* Even smaller on hover */
+      height: 10px; /* Even smaller on hover */
+      background: rgba(255, 111, 97, 0.5); /* Change color to semi-transparent */
+      border-radius: 50%; /* Keep it circular */
+      transform: translate(-50%, -50%) rotate(90deg);
     }
 
     /* Cursor Label */
@@ -128,6 +125,7 @@
       white-space: nowrap;
       opacity: 0;
       transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none; /* Ensure label doesn't block interactions */
     }
 
     .custom-cursor.hover-effect .cursor-label {
@@ -221,7 +219,7 @@
       overflow: hidden;
     }
     .vid::after {
-        z-index: 10;
+      z-index: 10;
       content: '';
       position: absolute;
       top: 0;
@@ -295,6 +293,76 @@
         height: 300px;
       }
     }
+
+    /* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  text-decoration: none;
+    width: 9em;
+    padding: 6px 10px;
+    position: relative;
+    border: 3px solid #149ceacc;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: 0.5s;
+    border-radius: 2.3em;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    pointer-events: auto;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the button */
+  left: 0;
+  min-width: 200px;
+  border-radius: 5px;
+  z-index: 1000; /* Ensure dropdown is above other elements */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+    margin-top: 10px;
+    text-wrap: nowrap;
+    width: max-content;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #1479EA; /* Highlight color */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Add hover effect to the dropdown button */
+.dropdown:hover .dropbtn {
+  box-shadow: inset 0px 0px 25px #1479EA;
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -307,8 +375,25 @@
   <header>
     <nav>
       <a href="#" data-label="Home">Home</a>
-      <a href="#" data-label="About Us">About Us</a>
-      <a href="#" data-label="Therapy Focus">Therapy Focus</a>
+      <div class="dropdown" data-label="About Us">
+        <a href="#" class="dropbtn">About Us</a>
+        <div class="dropdown-content">
+          <a href="#" data-label="Our Journey and Achievements">Our Journey and Achievements</a>
+          <a href="#" data-label="Our Team">Our Team</a>
+          <a href="#" data-label="Life at Glandix">Life at Glandix</a>
+        </div>
+      </div>
+      <div class="dropdown" data-label="Therapy Focus">
+        <a href="#" class="dropbtn">Therapy Focus</a>
+        <div class="dropdown-content">
+          <a href="#" data-label="General Segment">General Segment</a>
+          <a href="#" data-label="Orthopaedics">Orthopaedics</a>
+          <a href="#" data-label="Orthopedics">Orthopedics</a>
+          <a href="#" data-label="Neuro Care">Neuro Care</a>
+          <a href="#" data-label="Psychiatry">Psychiatry</a>
+          <a href="#" data-label="Ortho">Ortho</a>
+        </div>
+      </div>
       <div class="carousel">
         <div class="carousel-slides">
           <!-- Slide 1 -->
@@ -370,8 +455,8 @@
 
     // Move custom cursor with mouse
     document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.pageX}px`;
-      cursor.style.top = `${e.pageY}px`;
+      cursor.style.left = `${e.clientX}px`; // Use clientX for viewport-relative positioning
+      cursor.style.top = `${e.clientY}px`; // Use clientY for viewport-relative positioning
     });
 
     // Add interaction effects for navigation buttons
@@ -379,12 +464,27 @@
 
     navButtons.forEach(button => {
       button.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover-effect'); // Add hover effect
+        cursor.classList.add('hover-effect'); // Add hover effect to cursor
         cursorLabel.textContent = button.getAttribute('data-label'); // Set label text
       });
 
       button.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover-effect'); // Remove hover effect
+        cursor.classList.remove('hover-effect'); // Remove hover effect from cursor
+        cursorLabel.textContent = ''; // Clear label text
+      });
+    });
+
+    // Add interaction effects for dropdown links
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+
+    dropdownLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover-effect'); // Add hover effect to cursor
+        cursorLabel.textContent = link.getAttribute('data-label'); // Set label text
+      });
+
+      link.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover-effect'); // Remove hover effect from cursor
         cursorLabel.textContent = ''; // Clear label text
       });
     });
