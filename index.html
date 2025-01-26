@@ -48,57 +48,48 @@
     }
 
     /* Navigation Buttons */
-    /* Navigation Buttons */
-header nav a {
-  text-decoration: none;
-    width: 8em;
-    /* height: 3.1em; */
-    font-family: "Josefin Sans", serif;
-    padding: 6px 3px;
-    position: relative;
-    border: 3px solid #149ceacc;
-    outline: none;
-    background-color: transparent;
-    color: white;
-    transition: 0.5s;
-    border-radius: 2.3em;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    pointer-events: auto;
-}
+    header nav a {
+      text-decoration: none;
+      width: 8em;
+      font-family: "Josefin Sans", serif;
+      padding: 6px 3px;
+      position: relative;
+      border: 3px solid #149ceacc;
+      outline: none;
+      background-color: transparent;
+      color: white;
+      transition: 0.5s;
+      border-radius: 2.3em;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      pointer-events: auto;
+    }
 
-/* Hover effect for navigation buttons */
-header nav a:hover {
-  box-shadow: inset 0px 0px 25px #1479EA; /* Inner shadow on hover */
-  color: white; /* Text color on hover */
-  transform: scale(1.05); /* Slight scale-up effect */
-}
-
-
-/* Hide the top and bottom bars on hover */
-header nav a:hover::before,
-header nav a:hover::after {
-  transform: scale(0); /* Hide bars on hover */
-}
+    /* Hover effect for navigation buttons */
+    header nav a:hover {
+      box-shadow: inset 0px 0px 25px #1479EA; /* Inner shadow on hover */
+      color: white; /* Text color on hover */
+      transform: scale(1.05); /* Slight scale-up effect */
+    }
 
     /* Custom Cursor (Pill Shape) */
     .custom-cursor {
       position: fixed;
-      width: 35px;
-      height: 17px;
+      width: 32px;
+      height: 15px;
       background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%);
       border-radius: 50px;
-      border: 2px solid #fff;
+      border: 1px solid #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      pointer-events: none; /* Ensure cursor doesn't block interactions */
+      pointer-events: none;
       z-index: 1000;
-      transform: translate(-50%, -50%) rotate(90deg); /* Center the cursor */
+      transform: translate(-50%, -50%) rotate(65deg);
       transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
     }
 
@@ -201,8 +192,8 @@ header nav a:hover::after {
 
     /* Footer */
     footer {
-      background: #333;
-      color: #fff;
+      background: #f3f3f3;
+      color: #000000;
       padding: 20px;
       text-align: center;
     }
@@ -215,7 +206,8 @@ header nav a:hover::after {
     .vid {
       position: relative;
       width: 100%;
-      height: 600px;
+      height: 100vh;
+      box-shadow: 0px 12px 10px #00000052;
       overflow: hidden;
     }
     .vid::after {
@@ -238,31 +230,99 @@ header nav a:hover::after {
       z-index: 1; /* Ensure video is below the header */
     }
 
+    /* Text Carousel */
     /* Carousel */
-    .carousel {
-      position: relative;
-      width: 130px; /* Adjust width as needed */
-      height: 180px; /* Adjust height as needed */
-      overflow: hidden;
-      border-radius: 10px;
-    }
+.carousel {
+  position: relative;
+  width: 130px; /* Adjust width as needed */
+  height: 180px; /* Adjust height as needed */
+  overflow: hidden;
+  border-radius: 10px;
+}
 
-    /* Carousel Slides */
-    .carousel-slides {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+/* Carousel Slides */
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-    .carousel-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0; /* Hide all slides by default */
-      transition: opacity 1.5s ease-in-out; /* Fade transition */
-    }
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 1.5s ease-in-out; /* Fade transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image fits within the slide */
+}
+
+.carousel-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+}
+
+/* Text Carousel */
+.text-carousel {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20; /* Ensure it's above the video */
+  text-align: center;
+  width: 100%;
+}
+
+.text-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.text-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 1.5s ease-in-out; /* Fade transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.text-slide h2 {
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Josefin Sans", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+  animation: fadeInSlideUp 1s ease-out forwards; /* Apply animation */
+}
+
+/* Text Carousel Animation */
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     .carousel-slide img {
       width: 100%;
@@ -292,79 +352,242 @@ header nav a:hover::after {
       .vid {
         height: 300px;
       }
+
+      .text-slide h2 {
+        font-size: 32px; /* Adjust font size for smaller screens */
+      }
     }
 
     /* Dropdown Container */
-.dropdown {
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+      text-decoration: none;
+      width: 9em;
+      padding: 6px 10px;
+      text-wrap: nowrap;
+      position: relative;
+      border: 3px solid #149ceacc;
+      outline: none;
+      background-color: transparent;
+      color: white;
+      transition: 0.5s;
+      border-radius: 2.3em;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      pointer-events: auto;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%; /* Position below the button */
+      left: 0;
+      min-width: 200px;
+      border-radius: 5px;
+      z-index: 1000; /* Ensure dropdown is above other elements */
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: white;
+      margin-top: 10px;
+      text-wrap: nowrap;
+      width: max-content;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #1479EA; /* Highlight color */
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Add hover effect to the dropdown button */
+    .dropdown:hover .dropbtn {
+      box-shadow: inset 0px 0px 25px #1479EA;
+      transform: scale(1.05);
+    }
+
+    /* Mission, Vision, and Values Section */
+.mission-vision-values {
+  background-image: url(57971.jpg);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.181);
+}
+
+.mission-vision-values .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-vision-values .card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* Hidden by default for animation */
+  transform: translateY(20px); /* Initial position for animation */
+}
+
+.mission-vision-values .card.active {
+  opacity: 1; /* Show the card */
+  transform: translateY(0); /* Move to final position */
+}
+
+.mission-vision-values .card:hover {
+  transform: translateY(-10px);
+}
+
+.mission-vision-values .card-image {
+  border-radius: 15px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.mission-vision-values .card-content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 50px;
+  text-align: left;
+}
+
+.mission-vision-values .card-content h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2f6087;
+  margin-bottom: 15px;
+  font-family: "Josefin Sans", serif;
+}
+
+.mission-vision-values .card-content p {
+  font-size: 22px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.mission-vision-values .card-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mission-vision-values .card-content ul li {
+  font-size: 22px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
+    font-weight: 600;
+    color: #ffffff;
+  margin-bottom: 10px;
+  padding-left: 20px;
   position: relative;
-  display: inline-block;
 }
 
-/* Dropdown Button */
-.dropbtn {
-  text-decoration: none;
-    width: 9em;
-    padding: 6px 10px;
-    text-wrap: nowrap;
-    position: relative;
-    border: 3px solid #149ceacc;
-    outline: none;
-    background-color: transparent;
-    color: white;
-    transition: 0.5s;
-    border-radius: 2.3em;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    pointer-events: auto;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
+.mission-vision-values .card-content ul li::before {
+  content: "•";
+  color: #ffffff;
+  font-size: 24px;
   position: absolute;
-  top: 100%; /* Position below the button */
   left: 0;
-  min-width: 200px;
-  border-radius: 5px;
-  z-index: 1000; /* Ensure dropdown is above other elements */
+  top: -2px;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: white;
-    margin-top: 10px;
-    text-wrap: nowrap;
-    width: max-content;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    text-align: left;
-    transition: background-color 0.3s ease;
+/* Animation for cards */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #1479EA; /* Highlight color */
+/* Animation for Mission, Vision, and Values Cards */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+.mission-vision-values .card {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start position for animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Add hover effect to the dropdown button */
-.dropdown:hover .dropbtn {
-  box-shadow: inset 0px 0px 25px #1479EA;
-  transform: scale(1.05);
+.mission-vision-values .card.active {
+  opacity: 1; /* Show the card */
+  transform: translateY(0); /* Move to final position */
+}
+.mission-vision-values .card:nth-child(1) {
+  transition-delay: 0.4s; /* First card starts after 0.2s */
+}
+
+.mission-vision-values .card:nth-child(2) {
+  transition-delay: 0.6s; /* Second card starts after 0.4s */
+}
+
+.mission-vision-values .card:nth-child(3) {
+  transition-delay: 0.8s; /* Third card starts after 0.6s */
+}
+/* Google Map Section */
+.google-map {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  margin-top: 20px; /* Add some space above the map */
+  box-shadow: 2px -5px 15px rgba(0, 0, 0, 0.132);
+}
+
+.google-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe border */
 }
   </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -417,37 +640,105 @@ header nav a:hover::after {
       <source src="backvid.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+    <!-- Text Carousel -->
+    <div class="text-carousel">
+      <div class="text-slides">
+        <div class="text-slide active">
+          <h2>" ENHANCING HEALTH, ENRICHING LIVES "</h2>
+        </div>
+        <div class="text-slide">
+          <h2>" WHERE SCIENCE MEETS COMPASSION "</h2>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <h1>Your Trusted Partner in Healthcare</h1>
-    <p>Providing high-quality medications and healthcare solutions.</p>
-    <a href="#" class="btn">Learn More</a>
-  </section>
+<!-- Mission, Vision, and Values Section -->
+<section class="mission-vision-values">
+  <div class="container">
+    <!-- Mission -->
+    <div class="card">
+      
+      <div class="card-content">
+        <div>
+        <h3>MISSION</h3>
+        <p>
+          TO EMERGE AS A LEADING PHARMACEUTICAL COMPANY TO PROVIDE HIGH QUALITY, AFFORDABLE MEDICINES THAT ENHANCE PATIENT’S HEALTH AND WELL-BEING.
+        </p>
+        <p>
+          TO PIONEER NOVEL THERAPIES AND SOLUTIONS FOR EMPOWERING HEALTHCARE PROVIDERS AND PATIENTS TO COMBAT DISEASE AND IMPROVING QUALITY OF LIFE FOR ALL.
+        </p>
+        </div>
+        <img src="102.jpg" alt="Mission Image" class="card-image">
+      </div>
+    </div>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>Our Services</h2>
-    <div class="service-item">
-      <img src="https://via.placeholder.com/200" alt="Service 1" height="50">
-      <h3>Medication Delivery</h3>
-      <p>Fast and reliable delivery of medications to your doorstep.</p>
+    <!-- Vision -->
+    <div class="card">
+      <div class="card-content">
+        <img src="2148124783.jpg" alt="Vision Image" class="card-image">
+        <div style="text-align: right;">
+        <h3>OUR VISION</h3>
+        <p>
+          TO ENVISION A WORLD WHERE DISEASE IS A THING OF THE PAST, AND OUR INNOVATIVE MEDICINES HAVE MADE A MEANINGFUL DIFFERENCE IN THE LIVES OF MILLIONS.
+        </p>
+      </div>
+      </div>
     </div>
-    <div class="service-item">
-      <img src="https://via.placeholder.com/200" alt="Service 2" height="50">
-      <h3>Telemedicine</h3>
-      <p>Consult with healthcare professionals online.</p>
+
+    <!-- Values -->
+    <div class="card">
+      <div class="card-content">
+        <div>
+        <h3>OUR VALUES</h3>
+        <ul>
+          <li>PATIENT FOCUS: PRIORITIZE PATIENT NEEDS AND WELL-BEING IN ALL DECISIONS.</li>
+          <li>INNOVATION: FOSTER A CULTURE OF CREATIVITY, INNOVATION, AND CONTINUOUS IMPROVEMENT.</li>
+          <li>QUALITY: DELIVER HIGH-QUALITY PRODUCTS AND SERVICES THAT MEET OR EXCEED CUSTOMER EXPECTATIONS.</li>
+          <li>INTEGRITY: OPERATE WITH TRANSPARENCY, HONESTY, AND ETHICS IN ALL INTERACTIONS.</li>
+          <li>COLLABORATION: ENCOURAGE TEAMWORK, PARTNERSHIPS, AND OPEN COMMUNICATION TO DRIVE SUCCESS.</li>
+        </ul>
+      </div>
+      <img src="2149631023.jpg" alt="Values Image" class="card-image">
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Google Map Section -->
+<div class="google-map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7891.900932509691!2d76.9882922!3d8.5041907!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1737837141133!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2023 Pharma Company. All rights reserved.</p>
+    <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
   </footer>
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
+    
+    // Mission, Vision, and Values Animation
+const cards = document.querySelectorAll('.mission-vision-values .card');
+
+function checkScroll() {
+  cards.forEach((card) => {
+    const cardTop = card.getBoundingClientRect().top;
+    const cardBottom = card.getBoundingClientRect().bottom;
+
+    // If the card is in the viewport
+    if (cardTop < window.innerHeight && cardBottom > 0) {
+      card.classList.add('active');
+    }
+  });
+}
+
+// Trigger animation on scroll
+window.addEventListener('scroll', checkScroll);
+
+// Trigger animation on page load
+window.addEventListener('load', checkScroll);
     // Custom Cursor
     const cursor = document.getElementById('custom-cursor');
     const cursorLabel = document.getElementById('cursor-label');
@@ -512,6 +803,32 @@ header nav a:hover::after {
 
     // Show the first slide initially
     showSlide(currentIndex);
+
+    // Text Carousel functionality
+    const textSlides = document.querySelectorAll('.text-slide');
+    let textIndex = 0;
+
+    function showTextSlide(index) {
+      // Hide all text slides
+      textSlides.forEach((slide) => {
+        slide.classList.remove('active');
+      });
+
+      // Show the current text slide
+      textSlides[index].classList.add('active');
+    }
+
+    function nextTextSlide() {
+      textIndex = (textIndex + 1) % textSlides.length; // Loop through slides
+      showTextSlide(textIndex);
+    }
+
+    // Automatically transition text slides every 5 seconds
+    setInterval(nextTextSlide, 5000);
+
+    // Show the first text slide initially
+    showTextSlide(textIndex);
+    
   </script>
 </body>
 </html>
