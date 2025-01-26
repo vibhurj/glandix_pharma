@@ -373,6 +373,37 @@
     .toggle-button {
   display: none; /* Hidden by default */
 }
+.mission-vision-values h3 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 700;
+  color: #2f6087;
+  margin-bottom: 15px;
+  font-family: "Josefin Sans", serif;
+}
+
+.mission-vision-values .card-content p {
+  font-size: 22px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+#r2head{
+      margin-top: 90px;
+      margin-bottom: -40px;
+  text-align: right;
+}
+#r3head {
+  margin-top: 90px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+.row2 p{
+text-align: right;
+}
+
 /* Responsive Design for Mobile */
 /* Mobile Dropdown Styling */
 @media (max-width: 768px) {
@@ -407,7 +438,7 @@
 }
   .toggle-button {
     display: block; /* Show the toggle button */
-    background-color: #1479EA;
+    background-color: #0e437e61;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -417,11 +448,11 @@
   }
 
   .toggle-button:hover {
-    background-color: #0e5a9e;
+    background-color: rgb(10 58 111 / 95%);
   }
   header nav {
     display: none;
-    background-color: rgba(20, 121, 234, 0.95);
+    background-color: rgb(10 58 111 / 95%);
     position: absolute;
     top: 60px;
     left: 0;
@@ -473,6 +504,64 @@
     color: white;
     font-size: 14px;
   }
+  .mission-vision-values {
+    background-image: url(57971mob.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+footer p {
+    font-size: 14px;
+    margin: 0;
+}
+.dropdown-content a {
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+    text-wrap: nowrap;
+    /* width: max-content; */
+    /* padding: 10px 15px; */
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.mission-vision-values h3{
+  font-size: 35px;
+  text-align: center;
+}
+
+.mission-vision-values p{
+  text-align: justify;
+}
+.row1{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.mission-vision-values .card-image {
+  margin-bottom: 30px;
+}
+#r2head {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.row2 p{
+  text-align: justify;
+}
+.row3{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.row3 ul{
+  text-align: left;
+}
+#r3head {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
 }
 
     /* Dropdown Container */
@@ -548,7 +637,7 @@
 
     /* Mission, Vision, and Values Section */
 .mission-vision-values {
-  background-image: url(57971.jpg);
+  background-image: url('57971.jpg');
   margin-top: 100px;
   margin-bottom: 100px;
   background-size: cover;
@@ -591,34 +680,16 @@
 
 .mission-vision-values .card-image {
   border-radius: 15px;
-  height: 250px;
+  width: 100%;
   object-fit: cover;
 }
 
 .mission-vision-values .card-content {
-  display: flex;
   align-items: center;
-  padding: 20px;
-  gap: 50px;
   text-align: left;
 }
 
-.mission-vision-values .card-content h3 {
-  font-size: 30px;
-  font-weight: 700;
-  color: #2f6087;
-  margin-bottom: 15px;
-  font-family: "Josefin Sans", serif;
-}
 
-.mission-vision-values .card-content p {
-  font-size: 22px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
 
 .mission-vision-values .card-content ul {
   list-style: none;
@@ -712,6 +783,7 @@
       pointer-events: none; /* Ensure canvas doesn't block interactions */
       z-index: 3; /* Ensure confetti is above the slides */
     }
+  
   </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -725,7 +797,9 @@
 
   <!-- Header -->
   <header>
-    <button class="toggle-button" id="toggle-button">Menu</button>
+    <button class="toggle-button" id="toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+    </svg></button>
     <nav id="navbar">
       <a href="#" data-label="Home">Home</a>
       <div class="dropdown" data-label="About Us">
@@ -806,14 +880,14 @@
 
   <!-- Hero Section -->
 <!-- Mission, Vision, and Values Section -->
-<section class="mission-vision-values">
+<section class="mission-vision-values" >
   <div class="container">
     <!-- Mission -->
     <div class="card">
-      
-      <div class="card-content">
-        <div>
-        <h3>MISSION</h3>
+      <h3>MISSION</h3>
+      <div class="card-content row row1">
+        <div class="col-lg-8">
+        
         <p>
           TO EMERGE AS A LEADING PHARMACEUTICAL COMPANY TO PROVIDE HIGH QUALITY, AFFORDABLE MEDICINES THAT ENHANCE PATIENT’S HEALTH AND WELL-BEING.
         </p>
@@ -821,16 +895,21 @@
           TO PIONEER NOVEL THERAPIES AND SOLUTIONS FOR EMPOWERING HEALTHCARE PROVIDERS AND PATIENTS TO COMBAT DISEASE AND IMPROVING QUALITY OF LIFE FOR ALL.
         </p>
         </div>
+        <div class="col-lg-4">
         <img src="102.jpg" alt="Mission Image" class="card-image">
+        </div>
       </div>
     </div>
 
     <!-- Vision -->
     <div class="card">
-      <div class="card-content">
-        <img src="2148124783.jpg" alt="Vision Image" class="card-image">
-        <div style="text-align: right;">
-        <h3>OUR VISION</h3>
+      <h3 id="r2head">OUR VISION</h3>
+      <div class="card-content row row2">
+        <div class="col-lg-4">
+          <img src="2148124783.jpg" alt="Vision Image" class="card-image">
+        </div>
+        <div class="col-lg-8">
+        
         <p>
           TO ENVISION A WORLD WHERE DISEASE IS A THING OF THE PAST, AND OUR INNOVATIVE MEDICINES HAVE MADE A MEANINGFUL DIFFERENCE IN THE LIVES OF MILLIONS.
         </p>
@@ -840,9 +919,10 @@
 
     <!-- Values -->
     <div class="card">
-      <div class="card-content">
-        <div>
-        <h3>OUR VALUES</h3>
+      <h3 id="r3head">OUR VALUES</h3>
+      <div class="card-content row row3">
+        <div class="col-lg-8">
+        
         <ul>
           <li>PATIENT FOCUS: PRIORITIZE PATIENT NEEDS AND WELL-BEING IN ALL DECISIONS.</li>
           <li>INNOVATION: FOSTER A CULTURE OF CREATIVITY, INNOVATION, AND CONTINUOUS IMPROVEMENT.</li>
@@ -851,7 +931,9 @@
           <li>COLLABORATION: ENCOURAGE TEAMWORK, PARTNERSHIPS, AND OPEN COMMUNICATION TO DRIVE SUCCESS.</li>
         </ul>
       </div>
-      <img src="2149631023.jpg" alt="Values Image" class="card-image">
+      <div class="col-lg-4">
+        <img src="2149631023.jpg" alt="Values Image" class="card-image">
+      </div>
       </div>
     </div>
   </div>
@@ -1034,7 +1116,7 @@ document.addEventListener('click', (e) => {
     showTextSlide(textIndex);
 
   // Function to trigger confetti within the carousel
-    function triggerCelebrationSilver() {
+    function triggerCelebrationSilverdes() {
       const carousel = document.querySelector('.carouseldes');
       const carouselRect = carousel.getBoundingClientRect();
 
@@ -1052,7 +1134,7 @@ document.addEventListener('click', (e) => {
       });
     }
 
-    function triggerCelebrationSilver() {
+    function triggerCelebrationSilvermob() {
       const carousel = document.querySelector('.carouselmob');
       const carouselRect = carousel.getBoundingClientRect();
 
@@ -1071,7 +1153,37 @@ document.addEventListener('click', (e) => {
     }
 
     // Function to animate the carousel slides
-    function animateCarousel() {
+    function animateCarouselmob() {
+      const slides = document.querySelectorAll('.carousellogomob-slide');
+      let currentIndex = 0;
+
+      // Show the first slide initially
+      slides[currentIndex].classList.add('active');
+
+      // Function to switch slides
+      function nextSlide() {
+        // Remove active class from the current slide
+        slides[currentIndex].classList.remove('active');
+
+        // Move to the next slide
+        currentIndex = (currentIndex + 1) % slides.length;
+
+        // Add active class to the next slide
+        slides[currentIndex].classList.add('active');
+
+        // Trigger confetti animation
+        triggerCelebrationSilvermob();
+      }
+
+      // Automatically transition slides every 5 seconds
+      setInterval(nextSlide, 5000);
+    }
+
+    // Start the carousel animation
+    animateCarouselmob();
+    
+
+    function animateCarouseldes() {
       const slides = document.querySelectorAll('.carousellogo-slide');
       let currentIndex = 0;
 
@@ -1090,7 +1202,7 @@ document.addEventListener('click', (e) => {
         slides[currentIndex].classList.add('active');
 
         // Trigger confetti animation
-        triggerCelebrationSilver();
+        triggerCelebrationSilverdes();
       }
 
       // Automatically transition slides every 5 seconds
@@ -1098,8 +1210,7 @@ document.addEventListener('click', (e) => {
     }
 
     // Start the carousel animation
-    animateCarousel();
-    
+    animateCarouseldes();
   </script>
 </body>
 </html>
