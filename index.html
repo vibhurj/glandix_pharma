@@ -26,7 +26,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 100; /* Ensure header is above the video */
+      z-index: 100000; /* Ensure header is above the video */
       color: #fff;
       padding: 10px 20px;
       display: flex;
@@ -219,7 +219,6 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.416);
-      backdrop-filter: blur(3px);
     }
 
     .vid video {
@@ -232,14 +231,19 @@
 
     /* Text Carousel */
     /* Carousel */
-.carousel {
+.carouseldes {
   position: relative;
   width: 130px; /* Adjust width as needed */
   height: 180px; /* Adjust height as needed */
   overflow: hidden;
   border-radius: 10px;
 }
+.carouselmob {
+  display: none;
+  visibility: hidden;
+}
 
+/* Carousel Slides */
 /* Carousel Slides */
 .carousel-slides {
   position: relative;
@@ -247,27 +251,51 @@
   height: 100%;
 }
 
-.carousel-slide {
+.carousellogo-slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   opacity: 0; /* Hide all slides by default */
-  transition: opacity 0.1s ease-in-out; /* Fade transition */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
   z-index: 1; /* Ensure slides are stacked correctly */
 }
 
-.carousel-slide img {
+.carousellogo-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+}
+
+.carousellogo-slide img {
   width: 100%;
   height: 100%;
   object-fit: contain; /* Ensure the image fits within the slide */
 }
 
-.carousel-slide.active {
+.carousellogomob-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.carousellogomob-slide.active {
   opacity: 1; /* Show the active slide */
   z-index: 2; /* Bring the active slide to the front */
 }
+
+.carousellogomob-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image fits within the slide */
+}
+
+
 
 /* Text Carousel */
 .text-carousel {
@@ -324,39 +352,125 @@
   }
 }
 
-    .carousel-slide img {
+    .carousellogo-slide img {
       width: 100%;
       height: 100%;
       object-fit: contain; /* Ensure the image fits within the slide */
     }
 
-    .carousel-slide.active {
+    .carousellogo-slide.active {
       opacity: 1; /* Show the active slide */
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .services .service-item {
-        width: 100%;
-        margin: 20px 0;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 18px;
-      }
-
-      .vid {
-        height: 300px;
-      }
-
-      .text-slide h2 {
-        font-size: 32px; /* Adjust font size for smaller screens */
-      }
+    .carousellogomob-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure the image fits within the slide */
     }
+
+    .carousellogomob-slide.active {
+      opacity: 1; /* Show the active slide */
+    }
+    .toggle-button {
+  display: none; /* Hidden by default */
+}
+/* Responsive Design for Mobile */
+/* Mobile Dropdown Styling */
+@media (max-width: 768px) {
+
+  .carouselmob {
+    display: block;
+        visibility: visible;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 170px;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 10px;
+        z-index: 10000;
+}
+.text-slide h2 {
+    font-size: 25px;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-family: "Josefin Sans", serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.carouseldes {
+  display: none;
+  visibility: hidden;
+}
+  .toggle-button {
+    display: block; /* Show the toggle button */
+    background-color: #1479EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .toggle-button:hover {
+    background-color: #0e5a9e;
+  }
+  header nav {
+    display: none;
+    background-color: rgba(20, 121, 234, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  header nav.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Simplify navigation links */
+  header nav a, 
+  .dropdown .dropbtn {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: left;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  header nav a:hover,
+  .dropdown .dropbtn:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  /* Dropdown modifications */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+    display: none;
+    background: rgba(14, 90, 158, 0.9);
+    padding-left: 20px;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    padding: 15px 20px;
+    color: white;
+    font-size: 14px;
+  }
+}
 
     /* Dropdown Container */
     .dropdown {
@@ -608,7 +722,8 @@
 
   <!-- Header -->
   <header>
-    <nav>
+    <button class="toggle-button" id="toggle-button">Menu</button>
+    <nav id="navbar">
       <a href="#" data-label="Home">Home</a>
       <div class="dropdown" data-label="About Us">
         <a href="#" class="dropbtn">About Us</a>
@@ -627,15 +742,15 @@
           <a href="#" data-label="Psychiatry">Psychiatry</a>
         </div>
       </div>
-      <div class="carousel">
+      <div class="carouseldes">
         <canvas class="confetti-canvas"></canvas>
         <div class="carousel-slides">
           <!-- Slide 1 -->
-          <div class="carousel-slide active">
+          <div class="carousellogo-slide active">
             <img src="G-LOGO (1).png" alt="Slide 1">
           </div>
           <!-- Slide 2 -->
-          <div class="carousel-slide">
+          <div class="carousellogo-slide">
             <img src="text.png" alt="Slide 2">
           </div>
         </div>
@@ -646,12 +761,28 @@
     </nav>
   </header>
 
+  
   <!-- Video Section -->
   <div class="vid">
     <video autoplay muted loop id="background-video">
       <source src="backvid.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+
+    <div class="carouselmob">
+      <canvas class="confetti-canvas"></canvas>
+      <div class="carousel-slides">
+        <!-- Slide 1 -->
+        <div class="carousellogomob-slide active">
+          <img src="G-LOGO (1).png" alt="Slide 1">
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousellogomob-slide">
+          <img src="text.png" alt="Slide 2">
+        </div>
+      </div>
+    </div>
+    
     <!-- Text Carousel -->
     <div class="text-carousel">
       <div class="text-slides">
@@ -666,6 +797,8 @@
         </div>
       </div>
     </div>
+
+    
   </div>
 
   <!-- Hero Section -->
@@ -732,27 +865,56 @@
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
-    
-    // Mission, Vision, and Values Animation
-const cards = document.querySelectorAll('.mission-vision-values .card');
+    // Toggle Button for Mobile Navbar
+const toggleButton = document.getElementById('toggle-button');
+const navbar = document.getElementById('navbar');
 
-function checkScroll() {
-  cards.forEach((card) => {
-    const cardTop = card.getBoundingClientRect().top;
-    const cardBottom = card.getBoundingClientRect().bottom;
+toggleButton.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
 
-    // If the card is in the viewport
-    if (cardTop < window.innerHeight && cardBottom > 0) {
-      card.classList.add('active');
-    }
+// Dropdown Functionality for Mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+  const dropbtn = dropdown.querySelector('.dropbtn');
+
+  dropbtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    dropdown.classList.toggle('active');
   });
-}
+});
 
-// Trigger animation on scroll
-window.addEventListener('scroll', checkScroll);
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('active');
+    });
+  }
+});
 
-// Trigger animation on page load
-window.addEventListener('load', checkScroll);
+    // Mission, Vision, and Values Animation
+    const cards = document.querySelectorAll('.mission-vision-values .card');
+
+    function checkScroll() {
+      cards.forEach((card) => {
+        const cardTop = card.getBoundingClientRect().top;
+        const cardBottom = card.getBoundingClientRect().bottom;
+
+        // If the card is in the viewport
+        if (cardTop < window.innerHeight && cardBottom > 0) {
+          card.classList.add('active');
+        }
+      });
+    }
+
+    // Trigger animation on scroll
+    window.addEventListener('scroll', checkScroll);
+
+    // Trigger animation on page load
+    window.addEventListener('load', checkScroll);
+
     // Custom Cursor
     const cursor = document.getElementById('custom-cursor');
     const cursorLabel = document.getElementById('cursor-label');
@@ -794,7 +956,7 @@ window.addEventListener('load', checkScroll);
     });
 
     // Carousel functionality
-    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselSlides = document.querySelectorAll('.carousellogo-slide');
     let currentIndex = 0;
 
     function showSlide(index) {
@@ -817,6 +979,31 @@ window.addEventListener('load', checkScroll);
 
     // Show the first slide initially
     showSlide(currentIndex);
+
+
+    const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide');
+    let currentIndexmob = 0;
+
+    function showSlidemob(index) {
+      // Hide all slides
+      carouselSlidesmob.forEach((slide) => {
+        slide.classList.remove('active');
+      });
+
+      // Show the current slide
+      carouselSlidesmob[index].classList.add('active');
+    }
+
+    function nextSlidemob() {
+      currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length; // Loop through slides
+      showSlidemob(currentIndexmob);
+    }
+
+    // Automatically transition slides every 5 seconds
+    setInterval(nextSlidemob, 5000);
+
+    // Show the first slide initially
+    showSlidemob(currentIndexmob);
 
     // Text Carousel functionality
     const textSlides = document.querySelectorAll('.text-slide');
@@ -845,7 +1032,25 @@ window.addEventListener('load', checkScroll);
 
   // Function to trigger confetti within the carousel
     function triggerCelebrationSilver() {
-      const carousel = document.querySelector('.carousel');
+      const carousel = document.querySelector('.carouseldes');
+      const carouselRect = carousel.getBoundingClientRect();
+
+      confetti({
+        particleCount: 300, // Fewer particles for faster animation
+        spread: 150, // Smaller spread for faster animation
+        origin: {
+          x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth, // Center of the carousel
+          y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight, // Center of the carousel
+        },
+        scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
+        decay: 0.9, // Particles disappear faster
+        gravity: 1.3, // Particles fall faster
+        ticks: 110,
+      });
+    }
+
+    function triggerCelebrationSilver() {
+      const carousel = document.querySelector('.carouselmob');
       const carouselRect = carousel.getBoundingClientRect();
 
       confetti({
@@ -864,7 +1069,7 @@ window.addEventListener('load', checkScroll);
 
     // Function to animate the carousel slides
     function animateCarousel() {
-      const slides = document.querySelectorAll('.carousel-slide');
+      const slides = document.querySelectorAll('.carousellogo-slide');
       let currentIndex = 0;
 
       // Show the first slide initially
