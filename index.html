@@ -784,6 +784,173 @@ footer p {
       z-index: 3; /* Ensure confetti is above the slides */
     }
   
+/* Floating WhatsApp Icon */
+/* Floating WhatsApp Icon */
+/* Floating WhatsApp Icon */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366; /* WhatsApp green color */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's above other elements */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* WhatsApp Popup Modal */
+.whatsapp-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Above the floating icon */
+  overflow: hidden;
+}
+
+.whatsapp-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.whatsapp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #075e54; /* WhatsApp header color */
+  color: #fff;
+}
+
+.whatsapp-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.profile-status {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.close-modal {
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-modal:hover {
+  color: #ccc;
+}
+
+/* Message Area */
+.whatsapp-messages {
+  flex: 1;
+  padding: 10px;
+  background-color: #ece5dd; /* WhatsApp chat background color */
+  overflow-y: auto;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 12.5px;
+    border-bottom-left-radius: 12.5px;
+    border-bottom-right-radius: 12.5px;
+    position: relative;
+}
+
+.message-bubble.received {
+  background-color: #fff; /* Received message color */
+  align-self: flex-start;
+}
+
+
+.message-bubble p {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+}
+
+/* Input Area */
+.whatsapp-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0; /* WhatsApp input area color */
+  border-top: 1px solid #ddd;
+}
+
+.whatsapp-input textarea {
+  flex: 1;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    /* text-align: center; */
+    padding: 8px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    resize: none;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.whatsapp-input button {
+  padding: 10px 15px;
+  background-color: #0b7b6e; /* WhatsApp send button color */
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.whatsapp-input button:hover {
+  background-color: #128c7e; /* Darker green on hover */
+}
   </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -947,6 +1114,41 @@ footer p {
   <footer>
     <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
   </footer>
+
+<!-- Floating WhatsApp Icon -->
+<div class="whatsapp-float" id="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon">
+</div>
+
+<!-- WhatsApp Popup Modal -->
+<div class="whatsapp-modal" id="whatsapp-modal">
+  <div class="whatsapp-modal-content">
+    <!-- Header -->
+    <div class="whatsapp-header">
+      <div class="whatsapp-profile">
+        <img src="G-LOGO (1).png" alt="Profile Picture" class="profile-pic">
+        <div class="profile-info">
+          <span class="profile-name">Glandix Pharma</span>
+          <span class="profile-status">Online</span>
+        </div>
+      </div>
+      <span class="close-modal" id="close-modal">&times;</span>
+    </div>
+
+    <!-- Message Area -->
+    <div class="whatsapp-messages">
+      <div class="message-bubble received">
+        <p>How can I help you? :)</p>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="whatsapp-input">
+      <textarea id="whatsapp-message" placeholder="Write your message..."></textarea>
+      <button id="send-message">Send</button>
+    </div>
+  </div>
+</div>
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
@@ -1211,6 +1413,42 @@ document.addEventListener('click', (e) => {
 
     // Start the carousel animation
     animateCarouseldes();
+
+    const whatsappFloat = document.getElementById('whatsapp-float');
+  const whatsappModal = document.getElementById('whatsapp-modal');
+  const closeModal = document.getElementById('close-modal');
+  const sendMessageButton = document.getElementById('send-message');
+  const whatsappMessageInput = document.getElementById('whatsapp-message');
+
+  // Open modal when WhatsApp icon is clicked
+  whatsappFloat.addEventListener('click', () => {
+    whatsappModal.style.display = 'block';
+  });
+
+  // Close modal when close button is clicked
+  closeModal.addEventListener('click', () => {
+    whatsappModal.style.display = 'none';
+  });
+
+  // Close modal when clicking outside the modal
+  window.addEventListener('click', (event) => {
+    if (event.target === whatsappModal) {
+      whatsappModal.style.display = 'none';
+    }
+  });
+
+  // Send message via WhatsApp
+  sendMessageButton.addEventListener('click', () => {
+    const message = whatsappMessageInput.value.trim();
+    if (message) {
+      const whatsappUrl = `https://wa.me/+917356315263?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      whatsappModal.style.display = 'none'; // Close modal after sending
+    } else {
+      alert('Please enter a message.');
+    }
+  });
   </script>
+
 </body>
 </html>
