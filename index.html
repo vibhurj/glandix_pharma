@@ -88,7 +88,7 @@
       border: 1px solid #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       pointer-events: none;
-      z-index: 1000;
+      z-index: 200000;
       transform: translate(-50%, -50%) rotate(65deg);
       transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
     }
@@ -816,17 +816,16 @@ footer p {
 
 /* WhatsApp Popup Modal */
 .whatsapp-modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
-  bottom: 90px;
+  bottom: 100px;
   right: 20px;
   width: 300px;
   height: 400px;
   background-color: #fff;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 20000; /* Above the floating icon */
-  overflow: hidden;
+  z-index: 1003; /* Highest z-index */
 }
 
 .whatsapp-modal-content {
@@ -951,6 +950,141 @@ footer p {
 
 .whatsapp-input button:hover {
   background-color: #128c7e; /* Darker green on hover */
+}
+
+/* Floating Phone Icon */
+.phone-float {
+  position: fixed;
+  bottom: 90px; /* Position above the WhatsApp icon */
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff; /* Blue color for phone icon */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's above other elements */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.phone-float:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.phone-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Make the icon white */
+}
+
+/* Floating Icons Container */
+.floating-icons-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px; /* Increased gap between icons */
+  z-index: 1000;
+}
+
+/* Main Icon */
+.main-icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #4a90e2; /* Changed color to differentiate */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1002; /* Higher z-index */
+}
+
+.main-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+
+/* WhatsApp Icon */
+.whatsapp-float {
+  position: absolute;
+  bottom: 80px; /* Position above main icon */
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Phone Icon */
+.phone-float {
+  position: absolute;
+  bottom: 150px; /* Position above WhatsApp icon */
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.phone-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.phone-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+.floating-icons-container.active .whatsapp-float,
+.floating-icons-container.active .phone-float {
+  opacity: 1;
+  transform: scale(1);
 }
   </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -1116,9 +1250,24 @@ footer p {
     <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
   </footer>
 
-<!-- Floating WhatsApp Icon -->
-<div class="whatsapp-float" id="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon">
+<!-- Floating Icons Container -->
+<div class="floating-icons-container" id="floating-icons-container">
+  <!-- Main Icon -->
+  <div class="main-icon" id="main-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+      <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.664.163-1.397-.234-1.283-.94.188-1.16.46-2.28.81-3.36C.638 11.331 0 9.706 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+    </svg>
+  </div>
+  <!-- WhatsApp Icon -->
+  <div class="whatsapp-float" id="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon">
+  </div>
+  <!-- Phone Icon -->
+  <a href="tel:+919447014225" class="phone-float" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+    </svg>
+  </a>
 </div>
 
 <!-- WhatsApp Popup Modal -->
@@ -1153,7 +1302,67 @@ footer p {
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
-    // Toggle Button for Mobile Navbar
+
+// Toggle Floating Icons
+const floatingIconsContainer = document.getElementById('floating-icons-container');
+const mainIcon = document.getElementById('main-icon');
+const whatsappFloat = document.getElementById('whatsapp-float');
+const whatsappModal = document.getElementById('whatsapp-modal');
+const closeModal = document.getElementById('close-modal');
+const sendMessageButton = document.getElementById('send-message');
+const whatsappMessageInput = document.getElementById('whatsapp-message');
+
+// Toggle floating icons when main icon is clicked
+mainIcon.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent event from bubbling up
+  floatingIconsContainer.classList.toggle('active');
+});
+
+// Open WhatsApp modal only when WhatsApp icon is clicked
+whatsappFloat.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent event from bubbling up
+  whatsappModal.style.display = 'block';
+  floatingIconsContainer.classList.remove('active'); // Close the floating menu
+});
+
+// Close modal when close button is clicked
+closeModal.addEventListener('click', () => {
+  whatsappModal.style.display = 'none';
+});
+
+// Close floating icons when clicking outside
+document.addEventListener('click', (event) => {
+  if (!floatingIconsContainer.contains(event.target)) {
+    floatingIconsContainer.classList.remove('active');
+  }
+  if (!whatsappModal.contains(event.target) && event.target !== whatsappFloat) {
+    whatsappModal.style.display = 'none';
+  }
+});
+
+// Send message via WhatsApp only when send button is clicked
+sendMessageButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const message = whatsappMessageInput.value.trim();
+  if (message) {
+    const whatsappUrl = `https://wa.me/+919447014225?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    whatsappModal.style.display = 'none';
+    whatsappMessageInput.value = ''; // Clear the input after sending
+  } else {
+    alert('Please enter a message.');
+  }
+});
+
+// Allow pressing Enter to send message
+whatsappMessageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessageButton.click();
+  }
+});
+
+// Toggle Button for Mobile Navbar
 const toggleButton = document.getElementById('toggle-button');
 const navbar = document.getElementById('navbar');
 
@@ -1182,274 +1391,164 @@ document.addEventListener('click', (e) => {
   }
 });
 
-    // Mission, Vision, and Values Animation
-    const cards = document.querySelectorAll('.mission-vision-values .card');
+// Mission, Vision, and Values Animation
+const cards = document.querySelectorAll('.mission-vision-values .card');
 
-    function checkScroll() {
-      cards.forEach((card) => {
-        const cardTop = card.getBoundingClientRect().top;
-        const cardBottom = card.getBoundingClientRect().bottom;
+function checkScroll() {
+  cards.forEach((card) => {
+    const cardTop = card.getBoundingClientRect().top;
+    const cardBottom = card.getBoundingClientRect().bottom;
 
-        // If the card is in the viewport
-        if (cardTop < window.innerHeight && cardBottom > 0) {
-          card.classList.add('active');
-        }
-      });
-    }
-
-    // Trigger animation on scroll
-    window.addEventListener('scroll', checkScroll);
-
-    // Trigger animation on page load
-    window.addEventListener('load', checkScroll);
-
-    // Custom Cursor
-    const cursor = document.getElementById('custom-cursor');
-    const cursorLabel = document.getElementById('cursor-label');
-
-    // Move custom cursor with mouse
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`; // Use clientX for viewport-relative positioning
-      cursor.style.top = `${e.clientY}px`; // Use clientY for viewport-relative positioning
-    });
-
-    // Add interaction effects for navigation buttons
-    const navButtons = document.querySelectorAll('header nav a');
-
-    navButtons.forEach(button => {
-      button.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover-effect'); // Add hover effect to cursor
-        cursorLabel.textContent = button.getAttribute('data-label'); // Set label text
-      });
-
-      button.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover-effect'); // Remove hover effect from cursor
-        cursorLabel.textContent = ''; // Clear label text
-      });
-    });
-
-    // Add interaction effects for dropdown links
-    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
-
-    dropdownLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover-effect'); // Add hover effect to cursor
-        cursorLabel.textContent = link.getAttribute('data-label'); // Set label text
-      });
-
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover-effect'); // Remove hover effect from cursor
-        cursorLabel.textContent = ''; // Clear label text
-      });
-    });
-
-    // Carousel functionality
-    const carouselSlides = document.querySelectorAll('.carousellogo-slide');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      // Hide all slides
-      carouselSlides.forEach((slide) => {
-        slide.classList.remove('active');
-      });
-
-      // Show the current slide
-      carouselSlides[index].classList.add('active');
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % carouselSlides.length; // Loop through slides
-      showSlide(currentIndex);
-    }
-
-    // Automatically transition slides every 5 seconds
-    setInterval(nextSlide, 5000);
-
-    // Show the first slide initially
-    showSlide(currentIndex);
-
-
-    const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide');
-    let currentIndexmob = 0;
-
-    function showSlidemob(index) {
-      // Hide all slides
-      carouselSlidesmob.forEach((slide) => {
-        slide.classList.remove('active');
-      });
-
-      // Show the current slide
-      carouselSlidesmob[index].classList.add('active');
-    }
-
-    function nextSlidemob() {
-      currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length; // Loop through slides
-      showSlidemob(currentIndexmob);
-    }
-
-    // Automatically transition slides every 5 seconds
-    setInterval(nextSlidemob, 5000);
-
-    // Show the first slide initially
-    showSlidemob(currentIndexmob);
-
-    // Text Carousel functionality
-    const textSlides = document.querySelectorAll('.text-slide');
-    let textIndex = 0;
-
-    function showTextSlide(index) {
-      // Hide all text slides
-      textSlides.forEach((slide) => {
-        slide.classList.remove('active');
-      });
-
-      // Show the current text slide
-      textSlides[index].classList.add('active');
-    }
-
-    function nextTextSlide() {
-      textIndex = (textIndex + 1) % textSlides.length; // Loop through slides
-      showTextSlide(textIndex);
-    }
-
-    // Automatically transition text slides every 5 seconds
-    setInterval(nextTextSlide, 5000);
-
-    // Show the first text slide initially
-    showTextSlide(textIndex);
-
-  // Function to trigger confetti within the carousel
-    function triggerCelebrationSilverdes() {
-      const carousel = document.querySelector('.carouseldes');
-      const carouselRect = carousel.getBoundingClientRect();
-
-      confetti({
-        particleCount: 300, // Fewer particles for faster animation
-        spread: 150, // Smaller spread for faster animation
-        origin: {
-          x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth, // Center of the carousel
-          y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight, // Center of the carousel
-        },
-        scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
-        decay: 0.9, // Particles disappear faster
-        gravity: 1.3, // Particles fall faster
-        ticks: 110,
-      });
-    }
-
-    function triggerCelebrationSilvermob() {
-      const carousel = document.querySelector('.carouselmob');
-      const carouselRect = carousel.getBoundingClientRect();
-
-      confetti({
-        particleCount: 300, // Fewer particles for faster animation
-        spread: 150, // Smaller spread for faster animation
-        origin: {
-          x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth, // Center of the carousel
-          y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight, // Center of the carousel
-        },
-        scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
-        decay: 0.9, // Particles disappear faster
-        gravity: 1.3, // Particles fall faster
-        ticks: 110,
-      });
-    }
-
-    // Function to animate the carousel slides
-    function animateCarouselmob() {
-      const slides = document.querySelectorAll('.carousellogomob-slide');
-      let currentIndex = 0;
-
-      // Show the first slide initially
-      slides[currentIndex].classList.add('active');
-
-      // Function to switch slides
-      function nextSlide() {
-        // Remove active class from the current slide
-        slides[currentIndex].classList.remove('active');
-
-        // Move to the next slide
-        currentIndex = (currentIndex + 1) % slides.length;
-
-        // Add active class to the next slide
-        slides[currentIndex].classList.add('active');
-
-        // Trigger confetti animation
-        triggerCelebrationSilvermob();
-      }
-
-      // Automatically transition slides every 5 seconds
-      setInterval(nextSlide, 5000);
-    }
-
-    // Start the carousel animation
-    animateCarouselmob();
-    
-
-    function animateCarouseldes() {
-      const slides = document.querySelectorAll('.carousellogo-slide');
-      let currentIndex = 0;
-
-      // Show the first slide initially
-      slides[currentIndex].classList.add('active');
-
-      // Function to switch slides
-      function nextSlide() {
-        // Remove active class from the current slide
-        slides[currentIndex].classList.remove('active');
-
-        // Move to the next slide
-        currentIndex = (currentIndex + 1) % slides.length;
-
-        // Add active class to the next slide
-        slides[currentIndex].classList.add('active');
-
-        // Trigger confetti animation
-        triggerCelebrationSilverdes();
-      }
-
-      // Automatically transition slides every 5 seconds
-      setInterval(nextSlide, 5000);
-    }
-
-    // Start the carousel animation
-    animateCarouseldes();
-
-    const whatsappFloat = document.getElementById('whatsapp-float');
-  const whatsappModal = document.getElementById('whatsapp-modal');
-  const closeModal = document.getElementById('close-modal');
-  const sendMessageButton = document.getElementById('send-message');
-  const whatsappMessageInput = document.getElementById('whatsapp-message');
-
-  // Open modal when WhatsApp icon is clicked
-  whatsappFloat.addEventListener('click', () => {
-    whatsappModal.style.display = 'block';
-  });
-
-  // Close modal when close button is clicked
-  closeModal.addEventListener('click', () => {
-    whatsappModal.style.display = 'none';
-  });
-
-  // Close modal when clicking outside the modal
-  window.addEventListener('click', (event) => {
-    if (event.target === whatsappModal) {
-      whatsappModal.style.display = 'none';
+    // If the card is in the viewport
+    if (cardTop < window.innerHeight && cardBottom > 0) {
+      card.classList.add('active');
     }
   });
+}
 
-  // Send message via WhatsApp
-  sendMessageButton.addEventListener('click', () => {
-    const message = whatsappMessageInput.value.trim();
-    if (message) {
-      const whatsappUrl = `https://wa.me/+919447014225?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-      whatsappModal.style.display = 'none'; // Close modal after sending
-    } else {
-      alert('Please enter a message.');
-    }
+// Trigger animation on scroll
+window.addEventListener('scroll', checkScroll);
+
+// Trigger animation on page load
+window.addEventListener('load', checkScroll);
+
+// Custom Cursor
+const cursor = document.getElementById('custom-cursor');
+const cursorLabel = document.getElementById('cursor-label');
+
+// Move custom cursor with mouse
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+// Add interaction effects for navigation buttons
+const navButtons = document.querySelectorAll('header nav a');
+
+navButtons.forEach(button => {
+  button.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover-effect');
+    cursorLabel.textContent = button.getAttribute('data-label');
   });
+
+  button.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover-effect');
+    cursorLabel.textContent = '';
+  });
+});
+
+// Add interaction effects for dropdown links
+const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+
+dropdownLinks.forEach(link => {
+  link.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover-effect');
+    cursorLabel.textContent = link.getAttribute('data-label');
+  });
+
+  link.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover-effect');
+    cursorLabel.textContent = '';
+  });
+});
+
+// Desktop Logo Carousel functionality
+const carouselSlides = document.querySelectorAll('.carousellogo-slide');
+let currentIndex = 0;
+
+function showSlide(index) {
+  carouselSlides.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  carouselSlides[index].classList.add('active');
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % carouselSlides.length;
+  showSlide(currentIndex);
+  triggerCelebrationSilverdes();
+}
+
+setInterval(nextSlide, 5000);
+showSlide(currentIndex);
+
+// Mobile Logo Carousel functionality
+const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide');
+let currentIndexmob = 0;
+
+function showSlidemob(index) {
+  carouselSlidesmob.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  carouselSlidesmob[index].classList.add('active');
+}
+
+function nextSlidemob() {
+  currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length;
+  showSlidemob(currentIndexmob);
+  triggerCelebrationSilvermob();
+}
+
+setInterval(nextSlidemob, 5000);
+showSlidemob(currentIndexmob);
+
+// Text Carousel functionality
+const textSlides = document.querySelectorAll('.text-slide');
+let textIndex = 0;
+
+function showTextSlide(index) {
+  textSlides.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  textSlides[index].classList.add('active');
+}
+
+function nextTextSlide() {
+  textIndex = (textIndex + 1) % textSlides.length;
+  showTextSlide(textIndex);
+}
+
+setInterval(nextTextSlide, 5000);
+showTextSlide(textIndex);
+
+// Confetti Functions
+function triggerCelebrationSilverdes() {
+  const carousel = document.querySelector('.carouseldes');
+  const carouselRect = carousel.getBoundingClientRect();
+
+  confetti({
+    particleCount: 300,
+    spread: 150,
+    origin: {
+      x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth,
+      y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight,
+    },
+    scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
+    decay: 0.9,
+    gravity: 1.3,
+    ticks: 110,
+  });
+}
+
+function triggerCelebrationSilvermob() {
+  const carousel = document.querySelector('.carouselmob');
+  const carouselRect = carousel.getBoundingClientRect();
+
+  confetti({
+    particleCount: 300,
+    spread: 150,
+    origin: {
+      x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth,
+      y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight,
+    },
+    scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
+    decay: 0.9,
+    gravity: 1.3,
+    ticks: 110,
+  });
+}
   </script>
+
 
 </body>
 </html>
