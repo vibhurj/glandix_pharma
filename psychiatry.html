@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* Basic Reset */
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
     * {
       margin: 0;
       padding: 0;
@@ -89,7 +90,7 @@
       border: 1px solid #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       pointer-events: none;
-      z-index: 200000;
+      z-index: 200009;
       transform: translate(-50%, -50%) rotate(65deg);
       transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
     }
@@ -208,6 +209,8 @@
       position: relative;
       width: 100%;
       height: 100vh;
+      background-image: url(phyc.jpg);
+      background-size: cover;
       box-shadow: 0px 12px 10px #00000052;
       overflow: hidden;
     }
@@ -301,7 +304,7 @@
 /* Text Carousel */
 .text-carousel {
   position: absolute;
-  top: 65%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20; /* Ensure it's above the video */
@@ -317,8 +320,10 @@
 
 .text-slide {
   position: absolute;
+  padding-left: 200px;
   top: 0;
   left: 0;
+  text-align: left;
   width: 100%;
   height: 100%;
   opacity: 0; /* Hide all slides by default */
@@ -327,7 +332,7 @@
 }
 
 .text-slide h2 {
-  font-size: 50px;
+  font-size: 35px;
   color: #fff;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   font-family: "Josefin Sans", serif;
@@ -404,179 +409,11 @@
 .row2 p{
 text-align: right;
 }
-
-/* Responsive Design for Mobile */
-/* Mobile Dropdown Styling */
-@media (max-width: 768px) {
-
-  .carouselmob {
-    display: block;
-        visibility: visible;
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 170px;
-        height: 180px;
-        overflow: hidden;
-        border-radius: 10px;
-        z-index: 10000;
-}
-.custom-cursor {
-      display: none;
-    }
-.text-slide h2 {
-    font-size: 25px;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    font-family: "Josefin Sans", serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.carouseldes {
-  display: none;
-  visibility: hidden;
-}
-  .toggle-button {
-    display: block; /* Show the toggle button */
-    background-color: #0e437e61;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .toggle-button:hover {
-    background-color: rgb(10 58 111 / 95%);
-  }
-  header nav {
-    display: none;
-    background-color: rgb(10 58 111 / 95%);
-    position: absolute;
-    top: 60px;
-    left: 0;
+.contact{
     width: 100%;
-    padding: 10px 0;
-  }
-
-  header nav.active {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Simplify navigation links */
-  header nav a, 
-  .dropdown .dropbtn {
-    width: 100%;
-    padding: 15px 20px;
-    text-align: left;
-    border: none;
-    background: none;
-    color: white;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-
-  header nav a:hover,
-  .dropdown .dropbtn:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  /* Dropdown modifications */
-  .dropdown {
-    width: 100%;
-  }
-
-  .dropdown-content {
-    position: static;
-    display: none;
-    background: rgba(14, 90, 158, 0.9);
-    padding-left: 20px;
-  }
-
-  .dropdown.active .dropdown-content {
-    display: block;
-  }
-
-  .dropdown-content a {
-    padding: 15px 20px;
-    color: white;
-    font-size: 14px;
-  }
-  .mission-vision-values {
-    background-image: url(57971mob.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
-}
-footer p {
-    font-size: 14px;
-    margin: 0;
-}
-.dropdown-content a {
-    color: white;
-    width: 100%;
-    margin-top: 10px;
-    text-wrap: nowrap;
-    /* width: max-content; */
-    /* padding: 10px 15px; */
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-.mission-vision-values h3{
-  margin-bottom: 20px;
-  font-size: 35px;
-  text-align: center;
+    height: 500px;
 }
 
-.mission-vision-values p{
-  text-align: justify;
-}
-.row1{
-  display: flex;
-  flex-direction: column-reverse;
-}
-.mission-vision-values .card-image {
-  border-radius: 15px;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-bottom: 30px;
-}
-
-
-/* Hover effect for images */
-.mission-vision-values .card-image:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-  animation: none; /* Stop the floating animation on hover */
-}
-#r2head {
-    margin-top: 0px;
-    margin-bottom:25px;
-    text-align: center;
-}
-.row2 p{
-  text-align: justify;
-}
-.row3{
-  display: flex;
-  flex-direction: column-reverse;
-}
-.row3 ul{
-  text-align: left;
-}
-#r3head {
-    margin-top: 0px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-}
 
     /* Dropdown Container */
     .dropdown {
@@ -797,46 +634,13 @@ footer p {
       z-index: 3; /* Ensure confetti is above the slides */
     }
   
-/* Floating WhatsApp Icon */
-/* Floating WhatsApp Icon */
-/* Floating WhatsApp Icon */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366; /* WhatsApp green color */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Ensure it's above other elements */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.whatsapp-icon {
-  width: 40px;
-  height: 40px;
-}
-
 /* WhatsApp Popup Modal */
 .whatsapp-modal {
-  display: none;
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
+  max-width: 500px;
+  max-height: 450px;
+  min-height: 350px;
   background-color: #fff;
-  border-radius: 25px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 200003; /* Highest z-index */
 }
@@ -853,8 +657,8 @@ footer p {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background-color: #075e54; /* WhatsApp header color */
   color: #fff;
 }
@@ -916,6 +720,7 @@ footer p {
 }
 
 .message-bubble.received {
+  width: max-content;
   background-color: #fff; /* Received message color */
   align-self: flex-start;
 }
@@ -934,8 +739,8 @@ footer p {
   padding: 10px;
   background-color: #f0f0f0; /* WhatsApp input area color */
   border-top: 1px solid #ddd;
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .whatsapp-input textarea {
@@ -969,144 +774,6 @@ footer p {
   background-color: #128c7e; /* Darker green on hover */
 }
 
-/* Floating Phone Icon */
-.phone-float {
-  position: fixed;
-  bottom: 90px; /* Position above the WhatsApp icon */
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #007bff; /* Blue color for phone icon */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Ensure it's above other elements */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.phone-float:hover {
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.phone-icon {
-  width: 30px;
-  height: 30px;
-  filter: brightness(0) invert(1); /* Make the icon white */
-}
-
-/* Floating Icons Container */
-.floating-icons-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 15px; /* Increased gap between icons */
-  z-index: 1000;
-}
-
-/* Main Icon */
-.main-icon {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  background-color: #4a90e2; /* Changed color to differentiate */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1002; /* Higher z-index */
-}
-
-.main-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.main-icon svg {
-  width: 32px;
-  height: 32px;
-  fill: white;
-}
-
-/* WhatsApp Icon */
-.whatsapp-float {
-  position: absolute;
-  bottom: 80px; /* Position above main icon */
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.3s ease;
-  z-index: 1001;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.whatsapp-icon {
-  width: 40px;
-  height: 40px;
-}
-
-/* Phone Icon */
-.phone-float {
-  position: absolute;
-  bottom: 150px; /* Position above WhatsApp icon */
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background-color: #007bff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.3s ease;
-  z-index: 1001;
-}
-
-.phone-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.phone-float svg {
-  width: 30px;
-  height: 30px;
-  fill: white;
-}
-
-.floating-icons-container.active .whatsapp-float,
-.floating-icons-container.active .phone-float {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Icon Styling */
-/* Icon Styling */
-/* Icon Styling */
 .icon {
   display: inline-flex;
   margin-right: 15px;
@@ -1114,8 +781,233 @@ footer p {
   color: #2f6087;
   transition: all 0.3s ease;
 }
+.text-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+.text-links{
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    margin-top: 30px;
+    font-weight: 600;
+}
+.col-lg-6 h2{
+  font-family: "Bona Nova SC", serif;
+  font-weight: 600;
+  width: 450px;
+  font-size: 24px;
+}
+.col-lg-6 h4{
+  font-family: "Lora", serif;
+  font-weight: 600;
+  color: #636363;
+  font-size: 17px;
+}
+
+@media (max-width: 768px) {
+
+  .vid{
+    background-image: url(contactmob.jpg);
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+.carouselmob {
+  display: block;
+      visibility: visible;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 170px;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 10px;
+      z-index: 10000;
+}
+.custom-cursor {
+    display: none;
+  }
+.text-slide h2 {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Josefin Sans", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.carouseldes {
+display: none;
+visibility: hidden;
+}
+.toggle-button {
+  display: block; /* Show the toggle button */
+  background-color: #0e437e61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toggle-button:hover {
+  background-color: rgb(10 58 111 / 95%);
+}
+header nav {
+  display: none;
+  background-color: rgb(10 58 111 / 95%);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+header nav.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact{
+  width: 100%;
+  height: max-content;
+  padding: 10px;
+}
+.text-carousel{
+  margin-top: 80px;
+}
+.col-lg-6 h2{
+font-family: "Bona Nova SC", serif;
+font-weight: 600;
+width: max-content;
+font-size: 20px;
+}
+.col-lg-6 h4{
+font-family: "Lora", serif;
+font-weight: 600;
+color: #636363;
+font-size: 17px;
+}
+
+/* Simplify navigation links */
+header nav a, 
+.dropdown .dropbtn {
+  width: 100%;
+  padding: 15px 20px;
+  text-align: left;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover,
+.dropdown .dropbtn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Dropdown modifications */
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-content {
+  position: static;
+  display: none;
+  background: rgba(14, 90, 158, 0.9);
+  padding-left: 20px;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 15px 20px;
+  color: white;
+  font-size: 14px;
+}
+.mission-vision-values {
+  background-image: url(57971mob.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+.whatsapp-modal{
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.dropdown-content a {
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  text-wrap: nowrap;
+  /* width: max-content; */
+  /* padding: 10px 15px; */
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.mission-vision-values h3{
+margin-bottom: 20px;
+font-size: 35px;
+text-align: center;
+}
+
+.mission-vision-values p{
+text-align: justify;
+}
+.row1{
+display: flex;
+flex-direction: column-reverse;
+}
+.mission-vision-values .card-image {
+border-radius: 15px;
+width: 100%;
+object-fit: cover;
+transition: transform 0.5s ease, opacity 0.5s ease;
+margin-bottom: 30px;
+}
 
 
+/* Hover effect for images */
+.mission-vision-values .card-image:hover {
+transform: scale(1.05);
+opacity: 0.9;
+animation: none; /* Stop the floating animation on hover */
+}
+#r2head {
+  margin-top: 0px;
+  margin-bottom:25px;
+  text-align: center;
+}
+.row2 p{
+text-align: justify;
+}
+.row3{
+display: flex;
+flex-direction: column-reverse;
+}
+.row3 ul{
+text-align: left;
+}
+#r3head {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+}
   </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -1133,7 +1025,7 @@ footer p {
       <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
     </svg></button>
     <nav id="navbar">
-      <a href="#" data-label="Home">Home</a>
+      <a href="index.html" data-label="Home">Home</a>
       <div class="dropdown" data-label="About Us">
         <a href="#" class="dropbtn">About Us</a>
         <div class="dropdown-content">
@@ -1166,17 +1058,14 @@ footer p {
       </div>
       <a href="#" data-label="Products">Products</a>
       <a href="#" data-label="Services">Services</a>
-      <a href="contact_us.html" data-label="Contact Us">Contact Us</a>
+      <a href="#" data-label="Contact Us">Contact Us</a>
     </nav>
   </header>
 
   
   <!-- Video Section -->
   <div class="vid">
-    <video autoplay muted loop id="background-video">
-      <source src="backvid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    
 
     <div class="carouselmob">
       <canvas class="confetti-canvas"></canvas>
@@ -1191,222 +1080,30 @@ footer p {
         </div>
       </div>
     </div>
-    
-    <!-- Text Carousel -->
-    <div class="text-carousel">
-      <div class="text-slides">
-        <div class="text-slide active">
-          <h2>" ENHANCING HEALTH, ENRICHING LIVES "</h2>
-        </div>
-        <div class="text-slide">
-          <h2>" WHERE SCIENCE MEETS COMPASSION "</h2>
-        </div>
-        <div class="text-slide">
-          <h2>" TRANSFORMING LIVES THROUGH INNOVATION "</h2>
+  </div>
+
+  <div class="text-carousel">
+    <div class="text-slides">
+      <div class="text-slide">
+        <h2> MENTAL GEARS TURNING SOON... </h2>
+        <div class="text-links">
+            <a href="index.html">Home</a> / About Us / Psychiatry
         </div>
       </div>
     </div>
-
-    
   </div>
 
-  <!-- Hero Section -->
-<!-- Mission, Vision, and Values Section -->
-<section class="mission-vision-values" >
-  <div class="container">
-    <!-- Mission -->
-    <!-- Mission -->
-<div class="card">
-  <h3>
-    <span class="icon mission-icon"><i class="fas fa-bullseye"></i></span>
-    MISSION
-  </h3>
-  <div class="card-content row row1">
-    <div class="col-lg-8">
-      <p>
-        TO EMERGE AS A LEADING PHARMACEUTICAL COMPANY TO PROVIDE HIGH QUALITY, AFFORDABLE MEDICINES THAT ENHANCE PATIENT’S HEALTH AND WELL-BEING.
-      </p>
-      <p>
-        TO PIONEER NOVEL THERAPIES AND SOLUTIONS FOR EMPOWERING HEALTHCARE PROVIDERS AND PATIENTS TO COMBAT DISEASE AND IMPROVING QUALITY OF LIFE FOR ALL.
-      </p>
-    </div>
-    <div class="col-lg-4">
-      <video autoplay loop muted class="card-image">
-        <source src="70345-534725150_tiny.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-</div>
 
-<!-- Vision -->
-<div class="card">
-  <h3 id="r2head">
-    <span class="icon vision-icon"><i class="fas fa-eye"></i></span>
-    OUR VISION
-  </h3>
-  <div class="card-content row row2">
-    <div class="col-lg-4">
-      <video autoplay loop muted class="card-image">
-        <source src="5460-183788609_tiny.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="col-lg-8">
-      <p>
-        TO ENVISION A WORLD WHERE DISEASE IS A THING OF THE PAST, AND OUR INNOVATIVE MEDICINES HAVE MADE A MEANINGFUL DIFFERENCE IN THE LIVES OF MILLIONS.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Values -->
-<div class="card">
-  <h3 id="r3head">
-    <span class="icon values-icon"><i class="fas fa-hand-holding-heart"></i></span>
-    OUR VALUES
-  </h3>
-  <div class="card-content row row3">
-    <div class="col-lg-8">
-      <ul>
-        <li>PATIENT FOCUS: PRIORITIZE PATIENT NEEDS AND WELL-BEING IN ALL DECISIONS.</li>
-        <li>INNOVATION: FOSTER A CULTURE OF CREATIVITY, INNOVATION, AND CONTINUOUS IMPROVEMENT.</li>
-        <li>QUALITY: DELIVER HIGH-QUALITY PRODUCTS AND SERVICES THAT MEET OR EXCEED CUSTOMER EXPECTATIONS.</li>
-        <li>INTEGRITY: OPERATE WITH TRANSPARENCY, HONESTY, AND ETHICS IN ALL INTERACTIONS.</li>
-        <li>COLLABORATION: ENCOURAGE TEAMWORK, PARTNERSHIPS, AND OPEN COMMUNICATION TO DRIVE SUCCESS.</li>
-      </ul>
-    </div>
-    <div class="col-lg-4">
-      <video autoplay loop muted class="card-image">
-        <source src="215535_tiny.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-</div>
-  </div>
-</section>
+ 
+    <footer>
+      <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
+    </footer>
 
 <!-- Google Map Section -->
-<div class="google-map">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.4990552003826!2d77.6259625056192!3d12.937965323282523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14468d8973e5%3A0xbd11e83023acaa73!2s80%20Feet%20Rd%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1737874966014!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
-  </footer>
 
-<!-- Floating Icons Container -->
-<div class="floating-icons-container" id="floating-icons-container">
-  <!-- Main Icon -->
-  <div class="main-icon" id="main-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-      <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.664.163-1.397-.234-1.283-.94.188-1.16.46-2.28.81-3.36C.638 11.331 0 9.706 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-    </svg>
-  </div>
-  <!-- WhatsApp Icon -->
-  <div class="whatsapp-float" id="whatsapp-float">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon">
-  </div>
-  <!-- Phone Icon -->
-  <a href="tel:+919447014225" class="phone-float" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-    </svg>
-  </a>
-</div>
-
-<!-- WhatsApp Popup Modal -->
-<div class="whatsapp-modal" id="whatsapp-modal">
-  <div class="whatsapp-modal-content">
-    <!-- Header -->
-    <div class="whatsapp-header">
-      <div class="whatsapp-profile">
-        <img src="G-LOGO (1).png" alt="Profile Picture" class="profile-pic">
-        <div class="profile-info">
-          <span class="profile-name">Glandix Pharma</span>
-          <span class="profile-status">Online</span>
-        </div>
-      </div>
-      <span class="close-modal" id="close-modal">&times;</span>
-    </div>
-
-    <!-- Message Area -->
-    <div class="whatsapp-messages">
-      <div class="message-bubble received">
-        <p>How can I help you? :)</p>
-      </div>
-    </div>
-
-    <!-- Input Area -->
-    <div class="whatsapp-input">
-      <textarea id="whatsapp-message" placeholder="Write your message..."></textarea>
-      <button id="send-message">Send</button>
-    </div>
-  </div>
-</div>
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
-
-// Toggle Floating Icons
-const floatingIconsContainer = document.getElementById('floating-icons-container');
-const mainIcon = document.getElementById('main-icon');
-const whatsappFloat = document.getElementById('whatsapp-float');
-const whatsappModal = document.getElementById('whatsapp-modal');
-const closeModal = document.getElementById('close-modal');
-const sendMessageButton = document.getElementById('send-message');
-const whatsappMessageInput = document.getElementById('whatsapp-message');
-
-// Toggle floating icons when main icon is clicked
-mainIcon.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent event from bubbling up
-  floatingIconsContainer.classList.toggle('active');
-});
-
-// Open WhatsApp modal only when WhatsApp icon is clicked
-whatsappFloat.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent event from bubbling up
-  whatsappModal.style.display = 'block';
-  floatingIconsContainer.classList.remove('active'); // Close the floating menu
-});
-
-// Close modal when close button is clicked
-closeModal.addEventListener('click', () => {
-  whatsappModal.style.display = 'none';
-});
-
-// Close floating icons when clicking outside
-document.addEventListener('click', (event) => {
-  if (!floatingIconsContainer.contains(event.target)) {
-    floatingIconsContainer.classList.remove('active');
-  }
-  if (!whatsappModal.contains(event.target) && event.target !== whatsappFloat) {
-    whatsappModal.style.display = 'none';
-  }
-});
-
-// Send message via WhatsApp only when send button is clicked
-sendMessageButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  const message = whatsappMessageInput.value.trim();
-  if (message) {
-    const whatsappUrl = `https://wa.me/+919447014225?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    whatsappModal.style.display = 'none';
-    whatsappMessageInput.value = ''; // Clear the input after sending
-  } else {
-    alert('Please enter a message.');
-  }
-});
-
-// Allow pressing Enter to send message
-whatsappMessageInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendMessageButton.click();
-  }
-});
 
 // Toggle Button for Mobile Navbar
 const toggleButton = document.getElementById('toggle-button');
@@ -1452,10 +1149,8 @@ function checkScroll() {
   });
 }
 
-// Trigger animation on scroll
+// Trigger animation on scroll and page load
 window.addEventListener('scroll', checkScroll);
-
-// Trigger animation on page load
 window.addEventListener('load', checkScroll);
 
 // Custom Cursor
@@ -1468,31 +1163,16 @@ document.addEventListener('mousemove', (e) => {
   cursor.style.top = `${e.clientY}px`;
 });
 
-// Add interaction effects for navigation buttons
-const navButtons = document.querySelectorAll('header nav a');
+// Add interaction effects for navigation buttons and dropdown links
+const interactiveElements = document.querySelectorAll('header nav a, .dropdown-content a');
 
-navButtons.forEach(button => {
-  button.addEventListener('mouseenter', () => {
+interactiveElements.forEach(element => {
+  element.addEventListener('mouseenter', () => {
     cursor.classList.add('hover-effect');
-    cursorLabel.textContent = button.getAttribute('data-label');
+    cursorLabel.textContent = element.getAttribute('data-label');
   });
 
-  button.addEventListener('mouseleave', () => {
-    cursor.classList.remove('hover-effect');
-    cursorLabel.textContent = '';
-  });
-});
-
-// Add interaction effects for dropdown links
-const dropdownLinks = document.querySelectorAll('.dropdown-content a');
-
-dropdownLinks.forEach(link => {
-  link.addEventListener('mouseenter', () => {
-    cursor.classList.add('hover-effect');
-    cursorLabel.textContent = link.getAttribute('data-label');
-  });
-
-  link.addEventListener('mouseleave', () => {
+  element.addEventListener('mouseleave', () => {
     cursor.classList.remove('hover-effect');
     cursorLabel.textContent = '';
   });
@@ -1512,7 +1192,6 @@ function showSlide(index) {
 function nextSlide() {
   currentIndex = (currentIndex + 1) % carouselSlides.length;
   showSlide(currentIndex);
-  triggerCelebrationSilverdes();
 }
 
 setInterval(nextSlide, 5000);
@@ -1532,7 +1211,6 @@ function showSlidemob(index) {
 function nextSlidemob() {
   currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length;
   showSlidemob(currentIndexmob);
-  triggerCelebrationSilvermob();
 }
 
 setInterval(nextSlidemob, 5000);
@@ -1557,42 +1235,30 @@ function nextTextSlide() {
 setInterval(nextTextSlide, 5000);
 showTextSlide(textIndex);
 
-// Confetti Functions
-function triggerCelebrationSilverdes() {
-  const carousel = document.querySelector('.carouseldes');
-  const carouselRect = carousel.getBoundingClientRect();
 
-  confetti({
-    particleCount: 300,
-    spread: 150,
-    origin: {
-      x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth,
-      y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight,
-    },
-    scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
-    decay: 0.9,
-    gravity: 1.3,
-    ticks: 110,
-  });
-}
+const sendMessageButton = document.getElementById('send-message');
+const whatsappMessageInput = document.getElementById('whatsapp-message');
 
-function triggerCelebrationSilvermob() {
-  const carousel = document.querySelector('.carouselmob');
-  const carouselRect = carousel.getBoundingClientRect();
+// Send message via WhatsApp when send button is clicked
+sendMessageButton.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent form submission
+  const message = whatsappMessageInput.value.trim();
+  if (message) {
+    const whatsappUrl = `https://wa.me/+919447014225?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
+    whatsappMessageInput.value = ''; // Clear the input field
+  } else {
+    alert('Please enter a message.'); // Show alert if the message is empty
+  }
+});
 
-  confetti({
-    particleCount: 300,
-    spread: 150,
-    origin: {
-      x: (carouselRect.left + carouselRect.width / 2) / window.innerWidth,
-      y: (carouselRect.top + carouselRect.height / 2) / window.innerHeight,
-    },
-    scalar: Math.min(carouselRect.width / window.innerWidth, carouselRect.height / window.innerHeight) * 2,
-    decay: 0.9,
-    gravity: 1.3,
-    ticks: 110,
-  });
-}
+// Allow pressing Enter to send message
+whatsappMessageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault(); // Prevent newline in textarea
+    sendMessageButton.click(); // Trigger send button click
+  }
+});
   </script>
 
 
