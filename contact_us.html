@@ -407,179 +407,11 @@
 .row2 p{
 text-align: right;
 }
-
-/* Responsive Design for Mobile */
-/* Mobile Dropdown Styling */
-@media (max-width: 768px) {
-
-  .carouselmob {
-    display: block;
-        visibility: visible;
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 170px;
-        height: 180px;
-        overflow: hidden;
-        border-radius: 10px;
-        z-index: 10000;
-}
-.custom-cursor {
-      display: none;
-    }
-.text-slide h2 {
-    font-size: 20px;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    font-family: "Josefin Sans", serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.carouseldes {
-  display: none;
-  visibility: hidden;
-}
-  .toggle-button {
-    display: block; /* Show the toggle button */
-    background-color: #0e437e61;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .toggle-button:hover {
-    background-color: rgb(10 58 111 / 95%);
-  }
-  header nav {
-    display: none;
-    background-color: rgb(10 58 111 / 95%);
-    position: absolute;
-    top: 60px;
-    left: 0;
+.contact{
     width: 100%;
-    padding: 10px 0;
-  }
-
-  header nav.active {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Simplify navigation links */
-  header nav a, 
-  .dropdown .dropbtn {
-    width: 100%;
-    padding: 15px 20px;
-    text-align: left;
-    border: none;
-    background: none;
-    color: white;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-
-  header nav a:hover,
-  .dropdown .dropbtn:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  /* Dropdown modifications */
-  .dropdown {
-    width: 100%;
-  }
-
-  .dropdown-content {
-    position: static;
-    display: none;
-    background: rgba(14, 90, 158, 0.9);
-    padding-left: 20px;
-  }
-
-  .dropdown.active .dropdown-content {
-    display: block;
-  }
-
-  .dropdown-content a {
-    padding: 15px 20px;
-    color: white;
-    font-size: 14px;
-  }
-  .mission-vision-values {
-    background-image: url(57971mob.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
-}
-footer p {
-    font-size: 14px;
-    margin: 0;
-}
-.dropdown-content a {
-    color: white;
-    width: 100%;
-    margin-top: 10px;
-    text-wrap: nowrap;
-    /* width: max-content; */
-    /* padding: 10px 15px; */
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-.mission-vision-values h3{
-  margin-bottom: 20px;
-  font-size: 35px;
-  text-align: center;
+    height: 500px;
 }
 
-.mission-vision-values p{
-  text-align: justify;
-}
-.row1{
-  display: flex;
-  flex-direction: column-reverse;
-}
-.mission-vision-values .card-image {
-  border-radius: 15px;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-bottom: 30px;
-}
-
-
-/* Hover effect for images */
-.mission-vision-values .card-image:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-  animation: none; /* Stop the floating animation on hover */
-}
-#r2head {
-    margin-top: 0px;
-    margin-bottom:25px;
-    text-align: center;
-}
-.row2 p{
-  text-align: justify;
-}
-.row3{
-  display: flex;
-  flex-direction: column-reverse;
-}
-.row3 ul{
-  text-align: left;
-}
-#r3head {
-    margin-top: 0px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-}
 
     /* Dropdown Container */
     .dropdown {
@@ -961,10 +793,6 @@ footer p {
     margin-top: 30px;
     font-weight: 600;
 }
-.contact{
-    width: 100%;
-    height: 500px;
-}
 .col-lg-6 h2{
   font-family: "Bona Nova SC", serif;
   font-weight: 600;
@@ -976,6 +804,207 @@ footer p {
   font-weight: 600;
   color: #636363;
   font-size: 17px;
+}
+
+@media (max-width: 768px) {
+
+  .vid{
+    background-image: url(contactmob.jpg);
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+.carouselmob {
+  display: block;
+      visibility: visible;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 170px;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 10px;
+      z-index: 10000;
+}
+.custom-cursor {
+    display: none;
+  }
+.text-slide h2 {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Josefin Sans", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.carouseldes {
+display: none;
+visibility: hidden;
+}
+.toggle-button {
+  display: block; /* Show the toggle button */
+  background-color: #0e437e61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toggle-button:hover {
+  background-color: rgb(10 58 111 / 95%);
+}
+header nav {
+  display: none;
+  background-color: rgb(10 58 111 / 95%);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+header nav.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact{
+  width: 100%;
+  height: max-content;
+  padding: 10px;
+}
+.text-carousel{
+  margin-top: 80px;
+}
+.col-lg-6 h2{
+font-family: "Bona Nova SC", serif;
+font-weight: 600;
+width: max-content;
+font-size: 20px;
+}
+.col-lg-6 h4{
+font-family: "Lora", serif;
+font-weight: 600;
+color: #636363;
+font-size: 17px;
+}
+
+/* Simplify navigation links */
+header nav a, 
+.dropdown .dropbtn {
+  width: 100%;
+  padding: 15px 20px;
+  text-align: left;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover,
+.dropdown .dropbtn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Dropdown modifications */
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-content {
+  position: static;
+  display: none;
+  background: rgba(14, 90, 158, 0.9);
+  padding-left: 20px;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 15px 20px;
+  color: white;
+  font-size: 14px;
+}
+.mission-vision-values {
+  background-image: url(57971mob.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+.whatsapp-modal{
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.dropdown-content a {
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  text-wrap: nowrap;
+  /* width: max-content; */
+  /* padding: 10px 15px; */
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.mission-vision-values h3{
+margin-bottom: 20px;
+font-size: 35px;
+text-align: center;
+}
+
+.mission-vision-values p{
+text-align: justify;
+}
+.row1{
+display: flex;
+flex-direction: column-reverse;
+}
+.mission-vision-values .card-image {
+border-radius: 15px;
+width: 100%;
+object-fit: cover;
+transition: transform 0.5s ease, opacity 0.5s ease;
+margin-bottom: 30px;
+}
+
+
+/* Hover effect for images */
+.mission-vision-values .card-image:hover {
+transform: scale(1.05);
+opacity: 0.9;
+animation: none; /* Stop the floating animation on hover */
+}
+#r2head {
+  margin-top: 0px;
+  margin-bottom:25px;
+  text-align: center;
+}
+.row2 p{
+text-align: justify;
+}
+.row3{
+display: flex;
+flex-direction: column-reverse;
+}
+.row3 ul{
+text-align: left;
+}
+#r3head {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  text-align: center;
+}
 }
   </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -1124,15 +1153,15 @@ footer p {
     </div>
   </div>
 
-
+  <div class="google-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1973.0591983274442!2d76.99176903183923!3d8.496892798599518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMjknNDcuNSJOIDc2wrA1OSczNi45IkU!5e1!3m2!1sen!2sin!4v1738594319442!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
+    </footer>
 
 <!-- Google Map Section -->
-<div class="google-map">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1973.0591983274442!2d76.99176903183923!3d8.496892798599518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMjknNDcuNSJOIDc2wrA1OSczNi45IkU!5e1!3m2!1sen!2sin!4v1738594319442!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
-  </footer>
+
 
   <!-- JavaScript for Custom Cursor and Interaction -->
   <script>
