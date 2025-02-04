@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharma Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Basic Reset */
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      cursor: none; /* Hide default cursor */
+    }
+
+    /* Header */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100000; /* Ensure header is above the video */
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header nav {
+      user-select: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    /* Navigation Buttons */
+    header nav a {
+      text-decoration: none;
+      width: 8em;
+      font-family: "Josefin Sans", serif;
+      padding: 6px 3px;
+      position: relative;
+      border: 3px solid #149ceacc;
+      outline: none;
+      background-color: transparent;
+      color: white;
+      transition: 0.5s;
+      border-radius: 2.3em;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      pointer-events: auto;
+    }
+
+    /* Hover effect for navigation buttons */
+    header nav a:hover {
+      box-shadow: inset 0px 0px 25px #1479EA; /* Inner shadow on hover */
+      color: white; /* Text color on hover */
+      transform: scale(1.05); /* Slight scale-up effect */
+    }
+
+    /* Custom Cursor (Pill Shape) */
+    .custom-cursor {
+      position: fixed;
+      width: 32px;
+      height: 15px;
+      background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%);
+      border-radius: 50px;
+      border: 1px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      z-index: 200009;
+      transform: translate(-50%, -50%) rotate(65deg);
+      transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
+    }
+
+    /* Hover Effect for Cursor */
+    .custom-cursor.hover-effect {
+      width: 10px; /* Even smaller on hover */
+      height: 10px; /* Even smaller on hover */
+      background: rgba(255, 111, 97, 0.5); /* Change color to semi-transparent */
+      border-radius: 50%; /* Keep it circular */
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    /* Cursor Label */
+    .cursor-label {
+      position: absolute;
+      top: 5px; /* Position below the cursor */
+      left: 40px;
+      transform: translateX(-50%) rotate(0deg); /* Horizontal by default */
+      background: #ffffff;
+      color: #1385af;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none; /* Ensure label doesn't block interactions */
+    }
+
+    .custom-cursor.hover-effect .cursor-label {
+      opacity: 1; /* Show label on hover */
+      transform: translateX(-50%) rotate(270deg); /* Keep label horizontal */
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #ff6f61;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    .hero .btn:hover {
+      background: #e65a50;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .services .service-item {
+      display: inline-block;
+      width: 30%;
+      margin: 0 1.5%;
+      vertical-align: top;
+    }
+
+    .services .service-item img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .services .service-item h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .services .service-item p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background: #f3f3f3;
+      color: #000000;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Video Section */
+    .vid {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      z-index: 10;
+      background-image: url(journey.jpg);
+      background-size: cover;
+      box-shadow: 0px 12px 10px #00000052;
+      overflow: hidden;
+    }
+    .vid::after {
+      z-index: 10;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.416);
+    }
+
+    .vid video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1; /* Ensure video is below the header */
+    }
+
+    /* Text Carousel */
+    /* Carousel */
+.carouseldes {
+  position: relative;
+  width: 130px; /* Adjust width as needed */
+  height: 180px; /* Adjust height as needed */
+  overflow: hidden;
+  border-radius: 10px;
+}
+.carouselmob {
+  display: none;
+  visibility: hidden;
+}
+
+/* Carousel Slides */
+/* Carousel Slides */
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousellogo-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.carousellogo-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+}
+
+.carousellogo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image fits within the slide */
+}
+
+.carousellogomob-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.carousellogomob-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+}
+
+.carousellogomob-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure the image fits within the slide */
+}
+
+
+
+/* Text Carousel */
+.text-carousel {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20; /* Ensure it's above the video */
+  text-align: center;
+  width: 100%;
+}
+
+.text-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.text-slide {
+  position: absolute;
+  padding-left: 150px;
+  top: 0;
+  left: 0;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide all slides by default */
+  transition: opacity 1.5s ease-in-out; /* Fade transition */
+  z-index: 1; /* Ensure slides are stacked correctly */
+}
+
+.text-slide h2 {
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Josefin Sans", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-slide.active {
+  opacity: 1; /* Show the active slide */
+  z-index: 2; /* Bring the active slide to the front */
+  animation: fadeInSlideUp 1s ease-out forwards; /* Apply animation */
+}
+
+/* Text Carousel Animation */
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    .carousellogo-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure the image fits within the slide */
+    }
+
+    .carousellogo-slide.active {
+      opacity: 1; /* Show the active slide */
+    }
+    .carousellogomob-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensure the image fits within the slide */
+    }
+
+    .carousellogomob-slide.active {
+      opacity: 1; /* Show the active slide */
+    }
+    .toggle-button {
+  display: none; /* Hidden by default */
+}
+.mission-vision-values h3 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 700;
+  color: #2f6087;
+  margin-bottom: 15px;
+  font-family: "Josefin Sans", serif;
+}
+
+.mission-vision-values .card-content p {
+  font-size: 22px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+#r2head{
+      margin-top: 90px;
+      margin-bottom: -40px;
+  text-align: right;
+}
+#r3head {
+  margin-top: 90px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+.row2 p{
+text-align: right;
+}
+.contact{
+    width: 100%;
+    height: 500px;
+}
+
+
+    /* Dropdown Container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+      text-decoration: none;
+      width: 9em;
+      padding: 6px 10px;
+      text-wrap: nowrap;
+      position: relative;
+      border: 3px solid #149ceacc;
+      outline: none;
+      background-color: transparent;
+      color: white;
+      transition: 0.5s;
+      border-radius: 2.3em;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      pointer-events: auto;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%; /* Position below the button */
+      left: 0;
+      min-width: 200px;
+      border-radius: 5px;
+      z-index: 1000; /* Ensure dropdown is above other elements */
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: white;
+      margin-top: 10px;
+      text-wrap: nowrap;
+      width: max-content;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #1479EA; /* Highlight color */
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Add hover effect to the dropdown button */
+    .dropdown:hover .dropbtn {
+      box-shadow: inset 0px 0px 25px #1479EA;
+      transform: scale(1.05);
+    }
+
+    /* Mission, Vision, and Values Section */
+.mission-vision-values {
+  background-image: url('57971.jpg');
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.181);
+}
+
+.mission-vision-values .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-vision-values .card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 10px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* Hidden by default for animation */
+  transform: translateY(20px); /* Initial position for animation */
+}
+
+.mission-vision-values .card.active {
+  opacity: 1; /* Show the card */
+  transform: translateY(0); /* Move to final position */
+}
+
+.mission-vision-values .card:hover {
+  transform: translateY(-10px);
+}
+
+.mission-vision-values .card-image {
+  border-radius: 15px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mission-vision-values .card-content {
+  align-items: center;
+  text-align: left;
+}
+
+
+
+.mission-vision-values .card-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mission-vision-values .card-content ul li {
+  font-size: 22px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.33);
+    font-weight: 600;
+    color: #ffffff;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.mission-vision-values .card-content ul li::before {
+  content: "•";
+  color: #ffffff;
+  font-size: 24px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for Mission, Vision, and Values Cards */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mission-vision-values .card {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start position for animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.mission-vision-values .card.active {
+  opacity: 1; /* Show the card */
+  transform: translateY(0); /* Move to final position */
+}
+.mission-vision-values .card:nth-child(1) {
+  transition-delay: 0.4s; /* First card starts after 0.2s */
+}
+
+.mission-vision-values .card:nth-child(2) {
+  transition-delay: 0.6s; /* Second card starts after 0.4s */
+}
+
+.mission-vision-values .card:nth-child(3) {
+  transition-delay: 0.8s; /* Third card starts after 0.6s */
+}
+/* Google Map Section */
+.google-map {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  margin-top: 20px; /* Add some space above the map */
+  box-shadow: 2px -5px 15px rgba(0, 0, 0, 0.132);
+}
+
+.google-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe border */
+}
+
+.confetti-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      pointer-events: none; /* Ensure canvas doesn't block interactions */
+      z-index: 3; /* Ensure confetti is above the slides */
+    }
+  
+/* WhatsApp Popup Modal */
+.whatsapp-modal {
+  max-width: 500px;
+  max-height: 450px;
+  min-height: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 200003; /* Highest z-index */
+}
+
+.whatsapp-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.whatsapp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #075e54; /* WhatsApp header color */
+  color: #fff;
+}
+
+.whatsapp-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.profile-status {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.close-modal {
+  font-size: 28px;
+  margin-right: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-modal:hover {
+  color: #ccc;
+}
+
+/* Message Area */
+.whatsapp-messages {
+  flex: 1;
+  padding: 10px;
+  background-color: #ece5dd; /* WhatsApp chat background color */
+  overflow-y: auto;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 12.5px;
+    border-bottom-left-radius: 12.5px;
+    border-bottom-right-radius: 12.5px;
+    position: relative;
+}
+
+.message-bubble.received {
+  width: max-content;
+  background-color: #fff; /* Received message color */
+  align-self: flex-start;
+}
+
+
+.message-bubble p {
+  margin: 0;
+  font-size: 14px;
+  color: #000;
+}
+
+/* Input Area */
+.whatsapp-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0; /* WhatsApp input area color */
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.whatsapp-input textarea {
+  flex: 1;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    /* text-align: center; */
+    padding: 8px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    resize: none;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.whatsapp-input button {
+  padding: 10px 15px;
+  background-color: #0b7b6e; /* WhatsApp send button color */
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.whatsapp-input button:hover {
+  background-color: #128c7e; /* Darker green on hover */
+}
+
+.icon {
+  display: inline-flex;
+  margin-right: 15px;
+  font-size: 40px;
+  color: #2f6087;
+  transition: all 0.3s ease;
+}
+.text-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+.text-links{
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    margin-top: 30px;
+    font-weight: 600;
+}
+.col-lg-6 h2{
+  font-family: "Bona Nova SC", serif;
+  font-weight: 600;
+  width: 450px;
+  font-size: 24px;
+}
+.col-lg-6 h4{
+  font-family: "Lora", serif;
+  font-weight: 600;
+  color: #636363;
+  font-size: 17px;
+}
+
+/* Water Bubbles Section */
+.water-bubbles {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Adjust height as needed */
+  background-image: url('water.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+/* Bubble Styling */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 6%), inset 0 0 10px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    animation: float infinite ease-in-out;
+}
+.bubble:hover {
+  backdrop-filter: hue-rotate(-375deg);
+  transition: all .3s;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.bubble p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0e52a5;
+  margin: 0;
+  font-family: "Zain", serif;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bubble Sizes and Positions */
+.bubble-1 {
+  width: 220px;
+  height: 220px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 20%;
+  left: 5%;
+  animation-duration: 28s;
+}
+
+.bubble-2 {
+    width: 200px;
+    height: 200px;
+    background-image: url(water-bubble-png-2.png);
+    backdrop-filter: blur(2px);
+  background-size: cover;
+    top: 25%;
+    left: 75%;
+    animation-duration: 30s;
+}
+
+.bubble-3 {
+  width: 180px;
+  height: 180px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 35%;
+  left: 20%;
+  animation-duration: 25s;
+}
+
+.bubble-4 {
+    width: 220px;
+    height: 220px;
+    background-image: url(water-bubble-png-2.png);
+    backdrop-filter: blur(2px);
+  background-size: cover;
+    top: 45%;
+    left: 54%;
+    animation-duration: 39s;
+}
+
+.bubble-5 {
+  width: 140px;
+  height: 140px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 50%;
+  left: 40%;
+  animation-duration: 24s;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-90px) translateX(40px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(20px) translateX(-20px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-40px) translateX(50px) rotate(3deg);
+  }
+}
+
+@media (max-width: 768px) {
+
+    .text-slide{
+        margin-top: 100px;
+    text-align: center;
+    padding: 0%;
+}
+.text-links{
+    text-align: center;
+}
+  .vid{
+    background-image: url(journeymob.jpg);
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+.carouselmob {
+  display: block;
+      visibility: visible;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 170px;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 10px;
+      z-index: 10000;
+}
+.custom-cursor {
+    display: none;
+  }
+.text-slide h2 {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: "Josefin Sans", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.carouseldes {
+display: none;
+visibility: hidden;
+}
+.toggle-button {
+  display: block; /* Show the toggle button */
+  background-color: #0e437e61;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toggle-button:hover {
+  background-color: rgb(10 58 111 / 95%);
+}
+header nav {
+  display: none;
+  background-color: rgb(10 58 111 / 95%);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+header nav.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact{
+  width: 100%;
+  height: max-content;
+  padding: 10px;
+}
+.text-carousel{
+  margin-top: 80px;
+}
+.col-lg-6 h2{
+font-family: "Bona Nova SC", serif;
+font-weight: 600;
+width: max-content;
+font-size: 20px;
+}
+.col-lg-6 h4{
+font-family: "Lora", serif;
+font-weight: 600;
+color: #636363;
+font-size: 17px;
+}
+
+/* Simplify navigation links */
+header nav a, 
+.dropdown .dropbtn {
+  width: 100%;
+  padding: 15px 20px;
+  text-align: left;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover,
+.dropdown .dropbtn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Dropdown modifications */
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-content {
+  position: static;
+  display: none;
+  background: rgba(14, 90, 158, 0.9);
+  padding-left: 20px;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 15px 20px;
+  color: white;
+  font-size: 14px;
+}
+.mission-vision-values {
+  background-image: url(57971mob.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+}
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+.whatsapp-modal{
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.dropdown-content a {
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  text-wrap: nowrap;
+  /* width: max-content; */
+  /* padding: 10px 15px; */
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.mission-vision-values h3{
+margin-bottom: 20px;
+font-size: 35px;
+text-align: center;
+}
+
+.mission-vision-values p{
+text-align: justify;
+}
+.row1{
+display: flex;
+flex-direction: column-reverse;
+}
+.mission-vision-values .card-image {
+border-radius: 15px;
+width: 100%;
+object-fit: cover;
+transition: transform 0.5s ease, opacity 0.5s ease;
+margin-bottom: 30px;
+}
+
+
+/* Hover effect for images */
+.mission-vision-values .card-image:hover {
+transform: scale(1.05);
+opacity: 0.9;
+animation: none; /* Stop the floating animation on hover */
+}
+#r2head {
+  margin-top: 0px;
+  margin-bottom:25px;
+  text-align: center;
+}
+.row2 p{
+text-align: justify;
+}
+.row3{
+display: flex;
+flex-direction: column-reverse;
+}
+.row3 ul{
+text-align: left;
+}
+#r3head {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.water-bubbles {
+  position: relative;
+  width: 100%;
+  height: 900px; /* Adjust height as needed */
+  background-image: url('water.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+/* Bubble Styling */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 6%), inset 0 0 10px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    animation: float infinite ease-in-out;
+}
+.bubble:hover {
+  backdrop-filter: hue-rotate(-375deg);
+  transition: all .3s;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.bubble p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0e52a5;
+  margin: 0;
+  font-family: "Zain", serif;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bubble Sizes and Positions */
+.bubble-1 {
+  width: 220px;
+  height: 220px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 8%;
+  left: 5%;
+  animation-duration: 28s;
+}
+
+.bubble-2 {
+    width: 200px;
+    height: 200px;
+    background-image: url(water-bubble-png-2.png);
+    backdrop-filter: blur(2px);
+  background-size: cover;
+    top: 25%;
+    left: 40%;
+    animation-duration: 30s;
+}
+
+.bubble-3 {
+  width: 180px;
+  height: 180px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 45%;
+  left: 10%;
+  animation-duration: 25s;
+}
+
+.bubble-4 {
+    width: 220px;
+    height: 220px;
+    background-image: url(water-bubble-png-2.png);
+    backdrop-filter: blur(2px);
+  background-size: cover;
+    top: 60%;
+    left: 29%;
+    animation-duration: 39s;
+}
+
+.bubble-5 {
+  width: 140px;
+  height: 140px;
+  background-image: url(water-bubble-png-2.png);
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  top: 85%;
+  left: 20%;
+  animation-duration: 24s;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-90px) translateX(40px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(20px) translateX(-20px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-40px) translateX(50px) rotate(3deg);
+  }
+}
+}
+
+
+  </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <div class="cursor-label" id="cursor-label"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <button class="toggle-button" id="toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+    </svg></button>
+    <nav id="navbar">
+      <a href="index.html" data-label="Home">Home</a>
+      <div class="dropdown" data-label="About Us">
+        <a href="#" class="dropbtn">About Us</a>
+        <div class="dropdown-content">
+          <a href="journey.html" data-label="Our Journey and Achievements">Our Journey and Achievements</a>
+          <a href="#" data-label="Life at Glandix">Life at Glandix</a>
+          <a href="#" data-label="Our Team">Our Team</a>
+        </div>
+      </div>
+      <div class="dropdown" data-label="Therapy Focus">
+        <a href="#" class="dropbtn">Therapy Focus</a>
+        <div class="dropdown-content">
+          <a href="general_seg.html" data-label="General Segment">General Segment</a>
+          <a href="ortho.html" data-label="Orthopedics">Orthopedics</a>
+          <a href="neuro.html" data-label="Neuro Care">Neuro Care</a>
+          <a href="psychiatry.html" data-label="Psychiatry">Psychiatry</a>
+        </div>
+      </div>
+      <div class="carouseldes">
+        <canvas class="confetti-canvas"></canvas>
+        <div class="carousel-slides">
+          <!-- Slide 1 -->
+          <div class="carousellogo-slide active">
+            <img src="G-LOGO (1).png" alt="Slide 1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousellogo-slide">
+            <img src="text.png" alt="Slide 2">
+          </div>
+        </div>
+      </div>
+      <a href="#" data-label="Products">Products</a>
+      <a href="#" data-label="Services">Services</a>
+      <a href="contact_us.html" data-label="Contact Us">Contact Us</a>
+    </nav>
+  </header>
+
+  
+  <!-- Video Section -->
+  <div class="vid">
+    
+
+    <div class="carouselmob">
+      <canvas class="confetti-canvas"></canvas>
+      <div class="carousel-slides">
+        <!-- Slide 1 -->
+        <div class="carousellogomob-slide active">
+          <img src="G-LOGO (1).png" alt="Slide 1">
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousellogomob-slide">
+          <img src="text.png" alt="Slide 2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-carousel">
+    <div class="text-slides">
+      <div class="text-slide">
+        <h2> "Small steps, big impacts—our journey of success." </h2>
+        <div class="text-links">
+            <a href="index.html">Home</a> / About Us / Our Journey and Achievements
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Water Bubble Section -->
+<div class="water-bubbles">
+    <div class="bubble bubble-1">
+      <p>GLANDIX PHARMACEUTICALS PRIVATE LIMITED is listed in the class of Private Company and classified as Non-govt company.</p>
+    </div>
+    <div class="bubble bubble-2">
+      <p>GLANDIX PHARMACEUTICALS PRIVATE LIMITED, Is incorporated with MCA on 14th July, 2023.</p>
+      
+    </div>
+    <div class="bubble bubble-3">
+      <p>This company is registered at Registrar of Companies(ROC), RoC-Bangalore.</p>
+    </div>
+    <div class="bubble bubble-4">
+      <p>Now having presence in Neuro, Psychiatry, Ortho, and General Segment.</p>
+    </div>
+    <div class="bubble bubble-5">
+      <p>Will be expanding in all segments soon.</p>
+    </div>
+  </div>
+
+
+ 
+    <footer>
+      <p>&copy; 2025 Glandix Pharma Company. All rights reserved.</p>
+    </footer>
+
+<!-- Google Map Section -->
+
+
+  <!-- JavaScript for Custom Cursor and Interaction -->
+  <script>
+
+// Toggle Button for Mobile Navbar
+const toggleButton = document.getElementById('toggle-button');
+const navbar = document.getElementById('navbar');
+
+toggleButton.addEventListener('click', () => {
+  navbar.classList.toggle('active');
+});
+
+// Dropdown Functionality for Mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+  const dropbtn = dropdown.querySelector('.dropbtn');
+
+  dropbtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    dropdown.classList.toggle('active');
+  });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('active');
+    });
+  }
+});
+
+// Mission, Vision, and Values Animation
+const cards = document.querySelectorAll('.mission-vision-values .card');
+
+function checkScroll() {
+  cards.forEach((card) => {
+    const cardTop = card.getBoundingClientRect().top;
+    const cardBottom = card.getBoundingClientRect().bottom;
+
+    // If the card is in the viewport
+    if (cardTop < window.innerHeight && cardBottom > 0) {
+      card.classList.add('active');
+    }
+  });
+}
+
+// Trigger animation on scroll and page load
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+// Custom Cursor
+const cursor = document.getElementById('custom-cursor');
+const cursorLabel = document.getElementById('cursor-label');
+
+// Move custom cursor with mouse
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+// Add interaction effects for navigation buttons and dropdown links
+const interactiveElements = document.querySelectorAll('header nav a, .dropdown-content a');
+
+interactiveElements.forEach(element => {
+  element.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover-effect');
+    cursorLabel.textContent = element.getAttribute('data-label');
+  });
+
+  element.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover-effect');
+    cursorLabel.textContent = '';
+  });
+});
+
+// Desktop Logo Carousel functionality
+const carouselSlides = document.querySelectorAll('.carousellogo-slide');
+let currentIndex = 0;
+
+function showSlide(index) {
+  carouselSlides.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  carouselSlides[index].classList.add('active');
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % carouselSlides.length;
+  showSlide(currentIndex);
+}
+
+setInterval(nextSlide, 5000);
+showSlide(currentIndex);
+
+// Mobile Logo Carousel functionality
+const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide');
+let currentIndexmob = 0;
+
+function showSlidemob(index) {
+  carouselSlidesmob.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  carouselSlidesmob[index].classList.add('active');
+}
+
+function nextSlidemob() {
+  currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length;
+  showSlidemob(currentIndexmob);
+}
+
+setInterval(nextSlidemob, 5000);
+showSlidemob(currentIndexmob);
+
+// Text Carousel functionality
+const textSlides = document.querySelectorAll('.text-slide');
+let textIndex = 0;
+
+function showTextSlide(index) {
+  textSlides.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  textSlides[index].classList.add('active');
+}
+
+function nextTextSlide() {
+  textIndex = (textIndex + 1) % textSlides.length;
+  showTextSlide(textIndex);
+}
+
+setInterval(nextTextSlide, 5000);
+showTextSlide(textIndex);
+
+
+const sendMessageButton = document.getElementById('send-message');
+const whatsappMessageInput = document.getElementById('whatsapp-message');
+
+// Send message via WhatsApp when send button is clicked
+sendMessageButton.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent form submission
+  const message = whatsappMessageInput.value.trim();
+  if (message) {
+    const whatsappUrl = `https://wa.me/+919447014225?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
+    whatsappMessageInput.value = ''; // Clear the input field
+  } else {
+    alert('Please enter a message.'); // Show alert if the message is empty
+  }
+});
+
+// Allow pressing Enter to send message
+whatsappMessageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault(); // Prevent newline in textarea
+    sendMessageButton.click(); // Trigger send button click
+  }
+});
+  </script>
+
+
+</body>
+</html>
