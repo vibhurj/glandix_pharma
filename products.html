@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products - Glandix Pharma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <style>
+    /* All original styles are here */
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; cursor: none; }
+    header { position: absolute; top: 0; left: 0; width: 100%; z-index: 100000; color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header nav { user-select: none; width: 100%; display: flex; justify-content: space-evenly; align-items: center; }
+    header nav a { text-decoration: none; width: 8em; font-family: "Josefin Sans", serif; padding: 6px 3px; position: relative; border: 3px solid #149ceacc; outline: none; background-color: transparent; color: white; transition: 0.5s; border-radius: 2.3em; font-size: 16px; font-weight: bold; cursor: none; display: flex; justify-content: center; align-items: center; text-transform: capitalize; letter-spacing: 1px; pointer-events: auto; }
+    header nav a:hover { box-shadow: inset 0px 0px 25px #1479EA; color: white; transform: scale(1.05); }
+    .custom-cursor { position: fixed; width: 32px; height: 15px; background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%); border-radius: 50px; border: 1px solid #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); pointer-events: none; z-index: 200009; transform: translate(-50%, -50%) rotate(65deg); transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease; }
+    .custom-cursor.hover-effect { width: 10px; height: 10px; background: rgba(255, 111, 97, 0.5); border-radius: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+    .cursor-label { position: absolute; top: 5px; left: 40px; transform: translateX(-50%) rotate(0deg); background: #ffffff; color: #1385af; padding: 5px 10px; border-radius: 50px; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
+    .custom-cursor.hover-effect .cursor-label { opacity: 1; transform: translateX(-50%) rotate(270deg); }
+    footer { background: #f3f3f3; color: #000000; padding: 20px; text-align: center; }
+    footer p { margin: 0; }
+    .vid { position: relative; width: 100%; height: 100vh; background-image: url('products.jpg'); background-size: cover; background-position: center; box-shadow: 0px 12px 10px #00000052; overflow: hidden; }
+    .carouseldes { position: relative; width: 130px; height: 180px; overflow: hidden; border-radius: 10px; }
+    .carouselmob { display: none; visibility: hidden; }
+    .carousel-slides { position: relative; width: 100%; height: 100%; }
+    .carousellogo-slide, .carousellogomob-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease-in-out; z-index: 1; }
+    .carousellogo-slide.active, .carousellogomob-slide.active { opacity: 1; z-index: 2; }
+    .carousellogo-slide img, .carousellogomob-slide img { width: 100%; height: 100%; object-fit: contain; }
+    .text-carousel { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 20; text-align: center; width: 100%; }
+    .text-slides { position: relative; width: 100%; height: 100%; }
+    .text-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; z-index: 1; }
+    .text-slide h2 { font-size: 35px; color: #fff; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); font-family: "Josefin Sans", serif; text-transform: uppercase; letter-spacing: 2px; }
+    .text-slide.active { opacity: 1; z-index: 2; animation: fadeInSlideUp 1s ease-out forwards; }
+    @keyframes fadeInSlideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+    .toggle-button { display: none; }
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn { text-decoration: none; width: 9em; padding: 6px 10px; text-wrap: nowrap; position: relative; border: 3px solid #149ceacc; outline: none; background-color: transparent; color: white; transition: 0.5s; border-radius: 2.3em; font-size: 16px; font-weight: bold; cursor: none; display: flex; justify-content: center; align-items: center; text-transform: capitalize; letter-spacing: 1px; pointer-events: auto; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; border-radius: 5px; z-index: 1000; }
+    .dropdown-content a { color: white; margin-top: 10px; text-wrap: nowrap; width: max-content; padding: 10px 15px; text-decoration: none; display: block; font-size: 14px; text-align: left; transition: background-color 0.3s ease; }
+    .dropdown-content a:hover { background-color: #1479EA; }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown:hover .dropbtn { box-shadow: inset 0px 0px 25px #1479EA; transform: scale(1.05); }
+    .text-links a { color: white; text-decoration: none; font-size: 18px; text-align: center; margin-top: 10px; }
+    .text-links { color: white; font-size: 16px; text-align: center; margin-top: 30px; font-weight: 600; }
+    .products-section { padding: 80px 20px; background-color: #f8f9fa; }
+    .products-section .section-title { text-align: center; margin-bottom: 60px; font-family: "Josefin Sans", serif; font-size: 42px; font-weight: 700; color: #2f6087; }
+    .product-card { display: flex; background-color: #fff; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 40px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(47, 96, 135, 0.15); }
+    .product-image { display: flex; align-items: center; justify-content: center; flex: 0 0 250px; background-color: #eef5f9; }
+    .product-image img { width: 85%; height: 85%; border-radius: 35px; object-fit: cover; box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.338); }
+    .product-details { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-details h3 { font-family: "Bona Nova SC", serif; font-size: 26px; font-weight: 700; color: #075e54; margin-bottom: 15px; }
+    .product-details p { font-family: "Lora", serif; font-size: 16px; color: #555; flex-grow: 1; margin-bottom: 25px; line-height: 1.7; }
+    .product-details .btn-know-more { background: #ff6f61; color: #fff; padding: 12px 25px; text-decoration: none; font-size: 16px; border-radius: 50px; align-self: flex-start; transition: background-color 0.3s ease, transform 0.3s ease; font-weight: bold; }
+    .product-details .btn-know-more:hover { background: #e65a50; transform: translateY(-2px); }
+    @media (max-width: 768px) {
+      .vid{ height: 60vh; background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop'); background-size: cover; margin-bottom: 20px; }
+      .carouselmob { display: block; visibility: visible; position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 170px; height: 180px; overflow: hidden; border-radius: 10px; z-index: 10000; }
+      .custom-cursor { display: none; }
+      .text-slide h2 { font-size: 24px; }
+      .carouseldes { display: none; visibility: hidden; }
+      .toggle-button { display: block; background-color: #0e437e61; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; }
+      header nav { display: none; background-color: rgb(10 58 111 / 95%); position: absolute; top: 60px; left: 0; width: 100%; padding: 10px 0; }
+      header nav.active { display: flex; flex-direction: column; }
+      .text-carousel{ top: 50%; }
+      header nav a, .dropdown .dropbtn { width: 100%; padding: 15px 20px; text-align: left; border: none; background: none; color: white; font-size: 16px; transition: background-color 0.3s ease; }
+      .dropdown { width: 100%; }
+      .dropdown-content { position: static; display: none; background: rgba(14, 90, 158, 0.9); padding-left: 20px; }
+      .dropdown.active .dropdown-content { display: block; }
+      .dropdown-content a { padding: 15px 20px; color: white; font-size: 14px; width: 100%; text-align: center; }
+      .product-card { flex-direction: column; }
+      .product-image { width: 100%; flex-basis: 200px; }
+      .product-image img{ object-fit: contain; }
+      .product-details { padding: 25px; text-align: center; }
+      .product-details .btn-know-more { align-self: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor" id="custom-cursor"><div class="cursor-label" id="cursor-label"></div></div>
+  <header>
+    <button class="toggle-button" id="toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg></button>
+    <nav id="navbar">
+      <a href="index.html" data-label="Home">Home</a>
+      <div class="dropdown" data-label="About Us"><a href="#" class="dropbtn">About Us</a><div class="dropdown-content"><a href="journey.html" data-label="Our Journey and Achievements">Our Journey</a><a href="#" data-label="Life at Glandix">Life at Glandix</a><a href="#" data-label="Our Team">Our Team</a></div></div>
+      <div class="dropdown" data-label="Therapy Focus"><a href="#" class="dropbtn">Therapy Focus</a><div class="dropdown-content"><a href="general_seg.html" data-label="General Segment">General</a><a href="ortho.html" data-label="Orthopedics">Ortho</a><a href="neuro.html" data-label="Neuro Care">Neuro</a><a href="psychiatry.html" data-label="Psychiatry">Psychiatry</a></div></div>
+      <div class="carouseldes"><div class="carousel-slides"><div class="carousellogo-slide active"><img src="G-LOGO (1).png" alt="Logo Slide 1"></div><div class="carousellogo-slide"><img src="text.png" alt="Logo Slide 2"></div></div></div>
+      <a href="products.html" data-label="Products">Products</a>
+      <a href="#" data-label="Services">Services</a>
+      <a href="contact_us.html" data-label="Contact Us">Contact Us</a>
+    </nav>
+  </header>
+  
+  <div class="vid">
+    <div class="carouselmob"><div class="carousel-slides"><div class="carousellogomob-slide active"><img src="G-LOGO (1).png" alt="Mobile Logo 1"></div><div class="carousellogomob-slide"><img src="text.png" alt="Mobile Logo 2"></div></div></div>
+    <div class="text-carousel"><div class="text-slides"><div class="text-slide active"><h2>INNOVATIVE SOLUTIONS FOR BETTER HEALTH</h2><div class="text-links"><a href="index.html">Home</a> / Products</div></div></div></div>
+  </div>
+
+  <section class="products-section">
+    <div class="container">
+      <h2 class="section-title">Our Featured Products</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12"><div class="product-card"><div class="product-image"><img src="coq10.png" alt="Product A" style="height: unset; border-radius: 0%; box-shadow: none;"></div><div class="product-details"><h3>COQ10 ULTRA</h3><p>This formulation is a cardiovascular and antioxidant supplement particularly beneficial for patients with cardiovascular risk factors, heart disease, or those seeking comprehensive antioxidant support.</p><a href="coq10-ultra.html" class="btn-know-more" data-label="Details for COQ10 ULTRA">Know More</a></div></div></div>
+        <div class="col-lg-10 col-md-12"><div class="product-card"><div class="product-image"><img src="protodix.png" alt="Product B" style="height: unset; border-radius: 0%; box-shadow: none;"></div><div class="product-details"><h3>PROTODIX-40</h3><p>A trusted medication (Pantoprazole 40mg) designed to provide effective relief from acidity, heartburn, and acid reflux by significantly reducing stomach acid production.</p><a href="protodix-40.html" class="btn-know-more" data-label="Details for PROTODIX-40">Know More</a></div></div></div>
+        <div class="col-lg-10 col-md-12"><div class="product-card"><div class="product-image"><img src="vitamayo.png" alt="Product C" style="height: unset; border-radius: 0%; box-shadow: none;"></div><div class="product-details"><h3>VITAMAYO-D3</h3><p>A comprehensive multivitamin and multimineral supplement, particularly popular for managing diabetic complications, supporting overall metabolic health, and ensuring robust nerve and bone function.</p><a href="vitamayo-d3.html" class="btn-know-more" data-label="Details for VITAMAYO-D3">Know More</a></div></div></div>
+        <div class="col-lg-10 col-md-12"><div class="product-card"><div class="product-image"><img src="precoxib.png" alt="Product D" style="height: unset; border-radius: 0%; box-shadow: none;"></div><div class="product-details"><h3>PRECOXIB-75</h3><p>A dual-action medication combining Pregabalin and Etoricoxib to provide broad-spectrum relief from complex pain syndromes involving both neuropathic and inflammatory components.</p><a href="precoxib-75.html" class="btn-know-more" data-label="Details for PRECOXIB-75">Know More</a></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><p>© 2025 Glandix Pharma Company. All rights reserved.</p>
+<p>
+
+Disclaimer: The information provided herein is not medical advice and is not intended to replace medical advice offered by a health care provider. Please consult your health care provider for advice.
+
+</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const toggleButton = document.getElementById('toggle-button'); const navbar = document.getElementById('navbar'); toggleButton.addEventListener('click', () => { navbar.classList.toggle('active'); });
+    const dropdowns = document.querySelectorAll('.dropdown'); dropdowns.forEach(dropdown => { const dropbtn = dropdown.querySelector('.dropbtn'); dropbtn.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); }); dropdown.classList.toggle('active'); } }); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.dropdown')) { dropdowns.forEach(dropdown => { dropdown.classList.remove('active'); }); } });
+    const cursor = document.getElementById('custom-cursor'); const cursorLabel = document.getElementById('cursor-label');
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => { cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
+      const interactiveElements = document.querySelectorAll('header nav a, .dropdown-content a, .btn-know-more');
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => { cursor.classList.add('hover-effect'); cursorLabel.textContent = element.getAttribute('data-label') || 'Details'; });
+        element.addEventListener('mouseleave', () => { cursor.classList.remove('hover-effect'); cursorLabel.textContent = ''; });
+      });
+    }
+    const carouselSlides = document.querySelectorAll('.carousellogo-slide'); let currentIndex = 0; function showSlide(index) { if (carouselSlides.length > 0) { carouselSlides.forEach((slide) => slide.classList.remove('active')); carouselSlides[index].classList.add('active'); }} function nextSlide() { if (carouselSlides.length > 0) { currentIndex = (currentIndex + 1) % carouselSlides.length; showSlide(currentIndex); }} setInterval(nextSlide, 5000); if (carouselSlides.length > 0) showSlide(currentIndex);
+    const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide'); let currentIndexmob = 0; function showSlidemob(index) { if (carouselSlidesmob.length > 0) { carouselSlidesmob.forEach((slide) => slide.classList.remove('active')); carouselSlidesmob[index].classList.add('active'); }} function nextSlidemob() { if (carouselSlidesmob.length > 0) { currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length; showSlidemob(currentIndexmob); }} setInterval(nextSlidemob, 5000); if (carouselSlidesmob.length > 0) showSlidemob(currentIndexmob);
+  </script>
+</body>
+</html>

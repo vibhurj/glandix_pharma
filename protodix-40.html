@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROTODIX-40 - Glandix Pharma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <style>
+    /* Base styles from your working file */
+    @import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; cursor: none; background-color: #f8f9fa; overflow-x: hidden; }
+    header { position: absolute; top: 0; left: 0; width: 100%; z-index: 100000; color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header nav { user-select: none; width: 100%; display: flex; justify-content: space-evenly; align-items: center; }
+    header nav a { text-decoration: none; width: 8em; font-family: "Josefin Sans", serif; padding: 6px 3px; position: relative; border: 3px solid #149ceacc; outline: none; background-color: transparent; color: white; transition: 0.5s; border-radius: 2.3em; font-size: 16px; font-weight: bold; cursor: none; display: flex; justify-content: center; align-items: center; text-transform: capitalize; letter-spacing: 1px; pointer-events: auto; }
+    header nav a:hover { box-shadow: inset 0px 0px 25px #1479EA; color: white; transform: scale(1.05); }
+    .custom-cursor { position: fixed; width: 32px; height: 15px; background: linear-gradient(90deg, #ff6f61 50%, #2c9caf 50%); border-radius: 50px; border: 1px solid #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); pointer-events: none; z-index: 200009; transform: translate(-50%, -50%) rotate(65deg); transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-radius 0.2s ease; }
+    .custom-cursor.hover-effect { width: 10px; height: 10px; background: rgba(255, 111, 97, 0.5); border-radius: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+    .cursor-label { position: absolute; top: 5px; left: 40px; transform: translateX(-50%) rotate(0deg); background: #ffffff; color: #1385af; padding: 5px 10px; border-radius: 50px; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
+    .custom-cursor.hover-effect .cursor-label { opacity: 1; transform: translateX(-50%) rotate(270deg); }
+    footer { background: #f3f3f3; color: #000000; padding: 20px; text-align: center; }
+    footer p { margin: 0; }
+    .vid { position: relative; width: 100%; height: 60vh; background-image: url('products.jpg'); background-size: cover; background-position: center; box-shadow: 0px 12px 10px #00000052; overflow: hidden; }
+    .carouseldes { position: relative; width: 130px; height: 180px; overflow: hidden; border-radius: 10px; }
+    .carouselmob { display: none; visibility: hidden; }
+    .carousel-slides { position: relative; width: 100%; height: 100%; }
+    .carousellogo-slide, .carousellogomob-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease-in-out; z-index: 1; }
+    .carousellogo-slide.active, .carousellogomob-slide.active { opacity: 1; z-index: 2; }
+    .carousellogo-slide img, .carousellogomob-slide img { width: 100%; height: 100%; object-fit: contain; }
+    .text-carousel { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 20; text-align: center; width: 100%; }
+    .text-slide h2 { font-size: 35px; color: #fff; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); font-family: "Josefin Sans", serif; text-transform: uppercase; letter-spacing: 2px; }
+    .text-slide.active { opacity: 1; z-index: 2; }
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn { text-decoration: none; width: 9em; padding: 6px 10px; text-wrap: nowrap; position: relative; border: 3px solid #149ceacc; outline: none; background-color: transparent; color: white; transition: 0.5s; border-radius: 2.3em; font-size: 16px; font-weight: bold; cursor: none; display: flex; justify-content: center; align-items: center; text-transform: capitalize; letter-spacing: 1px; pointer-events: auto; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; border-radius: 5px; z-index: 1000; }
+    .dropdown-content a { color: white; margin-top: 10px; text-wrap: nowrap; width: max-content; padding: 10px 15px; text-decoration: none; display: block; font-size: 14px; text-align: left; transition: background-color 0.3s ease; }
+    .dropdown-content a:hover { background-color: #1479EA; }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown:hover .dropbtn { box-shadow: inset 0px 0px 25px #1479EA; transform: scale(1.05); }
+    .text-links a { color: white; text-decoration: none; font-size: 18px; text-align: center; margin-top: 10px; }
+    .text-links { color: white; font-size: 16px; text-align: center; margin-top: 30px; font-weight: 600; }
+    
+    /* NEW styles for product detail section */
+    .product-detail-main { padding: 80px 0; font-family: 'Lora', serif; }
+    .product-hero { padding-bottom: 60px; }
+    .product-hero img { width: 100%; max-width: 450px; display: block; margin: 0 auto; border-radius: 20px; }
+    .product-hero-title h2 { font-family: "Josefin Sans", serif; font-size: 52px; font-weight: 700; color: #075e54; margin-bottom: 20px; }
+    .product-hero-title .drug-type { font-family: "Bona Nova SC", serif; font-weight: 700; font-size: 20px; color: #ff6f61; text-transform: uppercase; letter-spacing: 1px; }
+    .product-hero-title p { font-size: 18px; color: #555; }
+    .detail-block { padding: 60px 0; border-top: 1px solid #dee2e6; }
+    .detail-block h3 { font-family: "Bona Nova SC", serif; font-size: 36px; font-weight: 700; color: #2f6087; margin-bottom: 30px; }
+    .detail-block ul { list-style: none; padding-left: 0; }
+    .detail-block ul li { font-size: 17px; margin-bottom: 12px; padding-left: 30px; position: relative; }
+    .detail-block ul li::before { content: '\f0da'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: #ff6f61; position: absolute; left: 0; top: 4px; }
+    .icon-box { display: flex; justify-content: center; align-items: center; min-height: 250px; }
+    .icon-box svg { width: 100%; max-width: 160px; height: auto; }
+    .components-block { background-color: #ffffff; }
+    .animated-element { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .animated-element.is-visible { opacity: 1; transform: translateY(0); }
+    
+    @media (max-width: 768px) {
+      .vid{ height: 60vh; }
+      .carouselmob { display: block; visibility: visible; position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 170px; height: 180px; overflow: hidden; border-radius: 10px; z-index: 10000; }
+      .custom-cursor { display: none; }
+      .text-slide h2 { font-size: 24px; }
+      .carouseldes { display: none; visibility: hidden; }
+      .toggle-button { display: block; background-color: #0e437e61; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; }
+      header nav { display: none; background-color: rgb(10 58 111 / 95%); position: absolute; top: 60px; left: 0; width: 100%; padding: 10px 0; }
+      header nav.active { display: flex; flex-direction: column; }
+      .text-carousel{ top: 50%; }
+      header nav a, .dropdown .dropbtn { width: 100%; padding: 15px 20px; text-align: left; border: none; background: none; color: white; font-size: 16px; }
+      .dropdown { width: 100%; }
+      .dropdown-content { position: static; display: none; background: rgba(14, 90, 158, 0.9); padding-left: 20px; }
+      .dropdown.active .dropdown-content { display: block; }
+      .dropdown-content a { padding: 15px 20px; color: white; font-size: 14px; width: 100%; text-align: center; }
+      .product-hero-title { margin-top: 40px; text-align: center; }
+      .product-hero-title h2 { font-size: 40px; }
+      .detail-block { text-align: center; }
+      .detail-block ul li { text-align: left; }
+      .icon-box { margin-bottom: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor" id="custom-cursor"><div class="cursor-label" id="cursor-label"></div></div>
+  <header>
+    <button class="toggle-button" id="toggle-button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg></button>
+    <nav id="navbar">
+      <a href="index.html" data-label="Home">Home</a>
+      <div class="dropdown" data-label="About Us"><a href="#" class="dropbtn">About Us</a><div class="dropdown-content"><a href="journey.html" data-label="Our Journey">Our Journey</a><a href="#" data-label="Life at Glandix">Life at Glandix</a></div></div>
+      <div class="dropdown" data-label="Therapy Focus"><a href="#" class="dropbtn">Therapy Focus</a><div class="dropdown-content"><a href="general_seg.html" data-label="General">General</a><a href="ortho.html" data-label="Ortho">Ortho</a></div></div>
+      <div class="carouseldes"><div class="carousel-slides"><div class="carousellogo-slide active"><img src="G-LOGO (1).png" alt="Logo Slide 1"></div><div class="carousellogo-slide"><img src="text.png" alt="Logo Slide 2"></div></div></div>
+      <a href="products.html" data-label="Products">Products</a>
+      <a href="#" data-label="Services">Services</a>
+      <a href="contact_us.html" data-label="Contact Us">Contact Us</a>
+    </nav>
+  </header>
+  
+  <div class="vid">
+    <div class="carouselmob"><div class="carousel-slides"><div class="carousellogomob-slide active"><img src="G-LOGO (1).png" alt="Mobile Logo 1"></div><div class="carousellogomob-slide"><img src="text.png" alt="Mobile Logo 2"></div></div></div>
+    <div class="text-carousel">
+      <div class="text-slide active">
+        <h2>PROTODIX-40</h2>
+        <div class="text-links">
+          <a href="index.html">Home</a> / <a href="products.html">Products</a> / PROTODIX-40
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="product-detail-main">
+    <div class="container">
+      <div class="row align-items-center product-hero animated-element">
+        <div class="col-md-6"><img src="protodix.png" alt="PROTODIX-40" style="height: unset; border-radius: 0%; box-shadow: none;"></div>
+        <div class="col-md-6 product-hero-title">
+          <span class="drug-type">Proton Pump Inhibitor (PPI)</span>
+          <h2>PROTODIX-40</h2>
+          <p style="font-size: 1rem;
+    font-weight: 600;
+    color: cadetblue;
+    margin-top: -20px;">( PANTOPRAZOLE 40MG GASTRO RESISTANT TABLET )</p>
+
+          <p>A trusted medication (Pantoprazole 40mg) designed to provide effective relief from acidity, heartburn, and acid reflux by significantly reducing stomach acid production.</p>
+        </div>
+      </div>
+      <div class="detail-block components-block animated-element">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7 order-md-2">
+              <h3>Mechanism of Action</h3>
+              <p>PROTODIX-40 contains Pantoprazole, a proton pump inhibitor. It works by irreversibly binding to and inhibiting the hydrogen-potassium ATPase pump (the "proton pump") located in the stomach's parietal cells. This action effectively blocks the final step in acid secretion, leading to a significant and long-lasting reduction in stomach acid levels for up to 24 hours.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <div class="icon-box">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mechanismIconTitle"><title id="mechanismIconTitle">Acid Protection</title><path d="M50 15 C 25 15, 20 40, 35 60 C 20 80, 40 90, 50 85 C 60 90, 80 80, 65 60 C 80 40, 75 15, 50 15 Z" fill="#FFCDD2"/><path d="M50,20 C30,20, 25,42.5, 38,60 C 25,75, 42,85, 50,80 C 58,85, 75,75, 62,60 C 75,42.5, 70,20, 50,20 Z" fill="#E57373"/><path d="M50 25 C 75 35, 75 55, 50 75 C 25 55, 25 35, 50 25 Z" fill-opacity="0.2" fill="#FFFFFF"/><path d="M40 50 L60 50 M50 40 L50 60" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></svg>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-block animated-element">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <h3>Common Uses & Indications</h3>
+              <ul>
+                <li><strong>Gastroesophageal Reflux Disease (GERD):</strong> For symptomatic relief and healing of acid-related damage.</li>
+                <li><strong>Peptic Ulcer Disease:</strong> Treats and helps prevent both stomach and duodenal ulcers.</li>
+                <li><strong>Zollinger-Ellison Syndrome:</strong> Manages conditions involving excessive stomach acid production.</li>
+                <li><strong>Erosive Esophagitis:</strong> Heals and maintains the esophagus from acid erosion.</li>
+                <li><strong>NSAID-Associated Ulcer Prevention:</strong> Protects the stomach lining for patients on long-term NSAID therapy.</li>
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <div class="icon-box">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="usesIconTitle"><title id="usesIconTitle">Medical Uses</title><rect x="20" y="15" width="60" height="70" rx="5" fill="#E3F2FD"/><path d="M35 35 L 45 45 L 65 25" stroke="#4CAF50" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="35" y1="60" x2="65" y2="60" stroke="#90CAF9" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="65" y2="75" stroke="#90CAF9" stroke-width="6" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-block components-block animated-element">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-7 order-md-2">
+                      <h3>Dosage, Side Effects & Considerations</h3>
+                      <h4>Typical Dosing:</h4>
+                      <ul>
+                        <li>The standard dose is one 40mg tablet taken once daily.</li>
+                        <li>For best results, take on an empty stomach, approximately one hour before a meal.</li>
+                        <li>Available in oral tablet and intravenous (IV) formulations for clinical use.</li>
+                      </ul>
+                      <h4>Common Side Effects:</h4>
+                      <ul>
+                        <li>Headache, diarrhea or constipation, nausea, abdominal pain, and dizziness.</li>
+                      </ul>
+                      <h4>Important Considerations:</h4>
+                      <ul>
+                        <li>Long-term use may increase the risk of bone fractures and can lead to Vitamin B12 or magnesium deficiencies.</li>
+                        <li>May interact with certain medications, including warfarin and clopidogrel. Always consult a healthcare provider.</li>
+                      </ul>
+                  </div>
+                  <div class="col-md-5 order-md-1">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="safetyIconTitle"><title id="safetyIconTitle">Dosage and Safety</title><rect x="20" y="20" width="60" height="60" rx="8" fill="#FFF3E0"/><path d="M35 35 H 65" stroke="#FFB74D" stroke-width="5" stroke-linecap="round"/><path d="M35 50 H 65" stroke="#FFB74D" stroke-width="5" stroke-linecap="round"/><path d="M35 65 H 55" stroke="#FFB74D" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="15" r="5" fill="#FFA726"/><path d="M50 20 V 10" stroke="#FFA726" stroke-width="3" stroke-linecap="round"/><path d="M50 15 H 65" stroke="#FFA726" stroke-width="3" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>© 2025 Glandix Pharma Company. All rights reserved.</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const toggleButton = document.getElementById('toggle-button'); const navbar = document.getElementById('navbar'); toggleButton.addEventListener('click', () => { navbar.classList.toggle('active'); });
+    const dropdowns = document.querySelectorAll('.dropdown'); dropdowns.forEach(dropdown => { const dropbtn = dropdown.querySelector('.dropbtn'); dropbtn.addEventListener('click', (e) => { if (window.innerWidth <= 768) { e.preventDefault(); dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); }); dropdown.classList.toggle('active'); } }); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.dropdown')) { dropdowns.forEach(dropdown => { dropdown.classList.remove('active'); }); } });
+    const cursor = document.getElementById('custom-cursor'); const cursorLabel = document.getElementById('cursor-label');
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => { cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
+      const interactiveElements = document.querySelectorAll('header nav a, .dropdown-content a, .btn-know-more');
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => { cursor.classList.add('hover-effect'); cursorLabel.textContent = element.getAttribute('data-label') || 'Details'; });
+        element.addEventListener('mouseleave', () => { cursor.classList.remove('hover-effect'); cursorLabel.textContent = ''; });
+      });
+    }
+    const carouselSlides = document.querySelectorAll('.carousellogo-slide'); let currentIndex = 0; function showSlide(index) { if (carouselSlides.length > 0) { carouselSlides.forEach((slide) => slide.classList.remove('active')); carouselSlides[index].classList.add('active'); }} function nextSlide() { if (carouselSlides.length > 0) { currentIndex = (currentIndex + 1) % carouselSlides.length; showSlide(currentIndex); }} setInterval(nextSlide, 5000); if (carouselSlides.length > 0) showSlide(currentIndex);
+    const carouselSlidesmob = document.querySelectorAll('.carousellogomob-slide'); let currentIndexmob = 0; function showSlidemob(index) { if (carouselSlidesmob.length > 0) { carouselSlidesmob.forEach((slide) => slide.classList.remove('active')); carouselSlidesmob[index].classList.add('active'); }} function nextSlidemob() { if (carouselSlidesmob.length > 0) { currentIndexmob = (currentIndexmob + 1) % carouselSlidesmob.length; showSlidemob(currentIndexmob); }} setInterval(nextSlidemob, 5000); if (carouselSlidesmob.length > 0) showSlidemob(currentIndexmob);
+    const animatedElements = document.querySelectorAll('.animated-element'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } }); }, { threshold: 0.1 }); animatedElements.forEach(el => { observer.observe(el); });
+  </script>
+</body>
+</html>
